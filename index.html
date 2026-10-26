@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MD Deco</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="MD Deco — décoration intérieur et extérieur sur mesure : dressings, meubles TV LED, faux plafonds, rideaux, boutiques. Demandez votre devis sur WhatsApp.">
+<meta property="og:title" content="MD Deco — Décoration intérieur & extérieur">
+<meta property="og:description" content="Dressings, meubles TV LED, faux plafonds, rideaux, salons et boutiques sur mesure. Devis sur WhatsApp : 78 211 81 53">
+<meta property="og:image" content="https://seck93723-lang.github.io/mddeco/copertina.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: dark walnut hero lit by LED-strip lines, then a single column of services, steps and the devis form */
+:root{
+  --bg:#f1efec; --surface:#ffffff; --fg:#231c17; --muted:#6c625a; --line:#ddd7cf;
+  --brass:#a57a26; --brass-soft:#f3e8d2; --walnut:#3a2518; --walnut-2:#5b3a24; --led:#fff6dc;
+  --on-dark:#f6efe4; --on-dark-muted:#cbbba7; --wa:#1f8f4e;
+  --display:"Marcellus", "Cormorant Garamond", Georgia, serif;
+  --body:"Manrope", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15110e; --surface:#1f1915; --fg:#f1eae1; --muted:#a99c8e; --line:#362d26;
+  --brass:#d4a64a; --brass-soft:#3a2e19; --walnut:#24170f; --walnut-2:#4a2f1d; --led:#fff3d1;
+  --on-dark:#f6efe4; --on-dark-muted:#cbbba7; --wa:#2fb06a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15110e; --surface:#1f1915; --fg:#f1eae1; --muted:#a99c8e; --line:#362d26;
+  --brass:#d4a64a; --brass-soft:#3a2e19; --walnut:#24170f; --walnut-2:#4a2f1d; --led:#fff3d1;
+  --on-dark:#f6efe4; --on-dark-muted:#cbbba7; --wa:#2fb06a; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.15}
+a{color:inherit}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--brass)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* top bar */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--walnut)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--walnut);color:var(--on-dark);border-bottom:1px solid rgba(255,246,220,.12)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.mark{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--brass);display:grid;place-items:center;font-family:var(--display);font-size:17px;color:var(--brass);background:rgba(0,0,0,.25)}
+.logo b{font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:.04em}
+.logo small{display:block;font-size:11px;color:var(--on-dark-muted);letter-spacing:.06em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font:600 15px/1 var(--body);cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-brass{background:var(--brass);color:#1b130c}
+.btn-ghost{background:transparent;color:var(--on-dark);border:1px solid rgba(255,246,220,.35)}
+.top .btn{padding:10px 14px;font-size:14px}
+
+/* hero */
+.hero{background:var(--walnut);color:var(--on-dark);position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1;padding-block:48px 56px;display:grid;gap:20px}
+.hero h1{font-size:clamp(34px,7vw,60px);max-width:14ch}
+.hero p{color:var(--on-dark-muted);max-width:46ch;margin:0;font-size:17px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.leds{position:absolute;inset:0;pointer-events:none}
+.leds span{position:absolute;right:-5%;height:2px;border-radius:2px;background:var(--led);box-shadow:0 0 12px 2px rgba(255,236,180,.55),0 0 40px 6px rgba(255,220,150,.18);opacity:.75}
+.leds span:nth-child(1){top:22%;width:46%}
+.leds span:nth-child(2){top:44%;width:38%}
+.leds span:nth-child(3){top:66%;width:52%}
+.leds span:nth-child(4){top:88%;width:30%}
+.leds::after{content:"";position:absolute;top:0;bottom:0;right:28%;width:3px;background:linear-gradient(var(--brass),#7a5a1c);opacity:.6}
+@media (max-width:640px){.leds span{opacity:.35}.leds::after{opacity:.3}}
+@media (prefers-reduced-motion:no-preference){.leds span{animation:glow 4s ease-in-out infinite alternate}.leds span:nth-child(2){animation-delay:1s}.leds span:nth-child(3){animation-delay:2s}}
+@keyframes glow{from{opacity:.45}to{opacity:.85}}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--on-dark-muted);margin-top:8px}
+.facts b{color:var(--on-dark)}
+
+section{padding-block:56px}
+.head{display:grid;gap:8px;margin-bottom:24px;max-width:60ch}
+.head h2{font-size:clamp(28px,4.5vw,40px)}
+.head p{margin:0;color:var(--muted)}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.svc .art{aspect-ratio:16/9;max-width:100%;position:relative}
+.svc .body{padding:16px 18px 18px;display:grid;gap:6px}
+.svc h3{font-size:22px}
+.svc p{margin:0;color:var(--muted);font-size:15px}
+.svc .ask{justify-self:start;margin-top:6px;background:none;border:0;padding:0;font:600 14px var(--body);color:var(--brass);cursor:pointer}
+.ph{position:absolute;bottom:8px;left:10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,246,220,.75);background:rgba(0,0,0,.35);padding:3px 8px;border-radius:999px}
+/* drawn panels evoking each trade (replaced by his real photos later) */
+.a-dress{background:linear-gradient(90deg,transparent 49.5%,#2a1a10 49.5% 50.5%,transparent 50.5%),linear-gradient(90deg,#8a5a34,#a8703f 30%,#8a5a34 50%,#9c6739 80%,#7d5130)}
+.a-dress::after{content:"";position:absolute;top:18%;bottom:18%;left:calc(50% - 12px);width:4px;border-radius:3px;background:#2b1b10;box-shadow:20px 0 0 #2b1b10}
+.a-tv{background:radial-gradient(ellipse at 50% 45%,rgba(255,240,200,.55),transparent 55%),#2a2420}
+.a-tv::after{content:"";position:absolute;left:28%;right:28%;top:24%;bottom:34%;background:#0d0b0a;border-radius:3px;box-shadow:0 0 0 2px #3a3029,0 0 26px 6px rgba(255,236,190,.35)}
+.a-tv::before{content:"";position:absolute;left:18%;right:18%;bottom:14%;height:10%;background:#1a1411;border-top:2px solid #5b4636}
+.a-plaf{background:radial-gradient(circle at 20% 30%,#fff7df 0 4px,rgba(255,236,180,.35) 5px,transparent 22px),radial-gradient(circle at 50% 30%,#fff7df 0 4px,rgba(255,236,180,.35) 5px,transparent 22px),radial-gradient(circle at 80% 30%,#fff7df 0 4px,rgba(255,236,180,.35) 5px,transparent 22px),linear-gradient(#6b4528 0 55%,#efece6 55%)}
+.a-rid{background:repeating-linear-gradient(90deg,#d9cdb8 0 14px,#c8b99f 14px 22px,#e2d7c4 22px 30px),#d9cdb8}
+.a-rid::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 47%,rgba(60,40,20,.35) 50%,transparent 53%)}
+.a-mur{background:repeating-linear-gradient(90deg,#3b2a20 0 10px,#22170f 10px 13px),#3b2a20}
+.a-mur::after{content:"";position:absolute;right:0;top:0;bottom:0;width:38%;background:repeating-linear-gradient(45deg,#8c7e70 0 12px,#6e6156 12px 24px)}
+.a-shop{background:repeating-linear-gradient(0deg,transparent 0 30px,#fff3d1 30px 32px,transparent 32px 46px),linear-gradient(90deg,#efe8dc 0 8%,#b8913b 8% 9.5%,#efe8dc 9.5% 45%,#b8913b 45% 46.5%,#efe8dc 46.5% 84%,#b8913b 84% 85.5%,#efe8dc 85.5%)}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;counter-reset:s}
+.steps li{counter-increment:s;padding:18px;border-top:2px solid var(--brass);display:grid;gap:6px;background:var(--surface);border-radius:0 0 12px 12px}
+.steps li::before{content:"Étape " counter(s);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--brass)}
+.steps b{font-size:17px}
+.steps span{color:var(--muted);font-size:15px}
+
+/* realisations */
+.reals{background:var(--walnut);color:var(--on-dark)}
+.reals .head p{color:var(--on-dark-muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(255,246,220,.25);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--on-dark)}
+.reals .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+/* form */
+.form{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:18px;max-width:720px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+label{display:grid;gap:6px;font-weight:600;font-size:14px}
+label span.opt{font-weight:400;color:var(--muted)}
+input,select,textarea{font:16px var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;width:100%}
+textarea{min-height:96px;resize:vertical}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
+legend{font-weight:600;font-size:14px;margin-bottom:8px;padding:0}
+.picks{display:flex;flex-wrap:wrap;gap:8px}
+.pick input{position:absolute;opacity:0;width:1px;height:1px}
+.pick span{display:inline-block;padding:9px 14px;border-radius:999px;border:1px solid var(--line);font-weight:500;font-size:14px;cursor:pointer;background:var(--bg)}
+.pick input:checked+span{background:var(--brass-soft);border-color:var(--brass);color:var(--fg);font-weight:700}
+.pick input:focus-visible+span{outline:2px solid var(--brass);outline-offset:2px}
+.note{font-size:14px;color:var(--muted);margin:0}
+.err{color:#c0392b;font-size:14px;font-weight:600;margin:0}
+.sent{border:1px solid var(--wa);border-radius:12px;padding:14px;display:grid;gap:8px;font-size:15px}
+.num{font-family:var(--display);font-size:24px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.copy{background:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font:600 13px var(--body);color:var(--fg);cursor:pointer}
+
+.svc .art.has{background:#2a1d14 center/cover no-repeat;cursor:pointer}
+.svc .art.has::before,.svc .art.has::after{display:none}
+.svc .art .count{position:absolute;bottom:8px;right:10px;font-size:12px;font-weight:700;color:#fff;background:rgba(0,0,0,.5);padding:4px 10px;border-radius:999px}
+.lb{position:fixed;inset:0;z-index:30;background:rgba(12,9,7,.94);overflow:auto;padding-block:calc(16px + env(safe-area-inset-top,0px)) calc(24px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.lb-in{max-width:900px;margin:0 auto;display:grid;gap:14px}
+.lb-h{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#f6efe4;position:sticky;top:0;background:rgba(12,9,7,.94);padding-block:6px}
+.lb-h h3{font-size:22px}
+.lb-x{background:none;border:1px solid rgba(255,246,220,.4);color:#f6efe4;border-radius:999px;padding:8px 14px;font:600 14px var(--body);cursor:pointer}
+.lb figure{margin:0;display:grid;gap:6px}
+.lb img{width:100%;border-radius:10px;display:block}
+.lb figcaption{color:#cbbba7;font-size:14px}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+.float{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:8;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+@media (min-width:900px){.float{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#accueil" aria-label="MD Deco, accueil">
+      <span class="mark">MD</span>
+      <span><b>MD DECO</b><small>Intérieur &amp; extérieur</small></span>
+    </a>
+    <a class="btn btn-wa" href="#devis">Demander un devis</a>
+  </div>
+</header>
+
+<main id="accueil">
+  <div class="hero">
+    <div class="leds" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="wrap">
+      <span class="eyebrow">Décoration intérieur &amp; extérieur</span>
+      <h1>Votre maison, finie comme il faut.</h1>
+      <p>Dressings, meubles TV avec LED, faux plafonds, rideaux et aménagement de boutiques. Tout est fait sur mesure et posé par notre équipe.</p>
+      <div class="cta">
+        <a class="btn btn-brass" href="#devis">Demander un devis</a>
+        <a class="btn btn-ghost" href="https://www.tiktok.com/@mddeco1" target="_blank" rel="noopener">Voir nos vidéos TikTok</a>
+      </div>
+      <div class="facts"><span><b>Fabrication</b> dans notre atelier</span><span><b>Sur mesure</b> selon vos dimensions</span><span><b>WhatsApp</b> <span class="vWa">78 211 81 53</span></span><span id="fZone" hidden><b>Zone</b> <span id="vZone"></span></span></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Nos services</span>
+        <h2>Ce que nous fabriquons et posons</h2>
+        <p>Touchez un service pour le choisir directement dans votre demande de devis.</p>
+      </div>
+      <div class="grid" id="svcGrid"></div>
+    </div>
+  </section>
+
+  <section class="reals" id="realisations">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Réalisations</span>
+        <h2>Nos chantiers en vidéo</h2>
+        <p>Chaque semaine, nous filmons les travaux terminés : chambres, salons, salons de coiffure, ateliers de tailleur, boutiques.</p>
+      </div>
+      <div class="chips">
+        <span class="chip">Armoires 3 portes avec miroir</span>
+        <span class="chip">Meuble TV mural rétroéclairé</span>
+        <span class="chip">Vitrines dorées avec LED</span>
+        <span class="chip">Faux plafond bois + spots</span>
+        <span class="chip">Lambris et panneaux 3D</span>
+        <span class="chip">Rideaux et voilages</span>
+      </div>
+      <div class="cta">
+        <a class="btn btn-brass" href="https://www.tiktok.com/@mddeco1" target="_blank" rel="noopener">Ouvrir @mddeco1 sur TikTok</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="etapes">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Comment ça se passe</span>
+        <h2>De la photo de votre pièce à la pose</h2>
+      </div>
+      <ol class="steps">
+        <li><b>Vous nous écrivez</b><span>Remplissez le formulaire, puis envoyez les photos de la pièce sur WhatsApp.</span></li>
+        <li><b>Prise des mesures</b><span>Nous passons sur place pour mesurer et choisir avec vous les couleurs et matériaux.</span></li>
+        <li><b>Devis et acompte</b><span>Vous recevez le devis détaillé. La fabrication commence après l'acompte.</span></li>
+        <li><b>Fabrication et pose</b><span>Notre équipe fabrique à l'atelier puis installe chez vous.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="devis">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Devis</span>
+        <h2>Demandez votre devis</h2>
+        <p>Votre demande s'ouvre dans WhatsApp, déjà écrite. Il suffit d'appuyer sur Envoyer.</p>
+      </div>
+      <form class="form" id="f" novalidate>
+        <div class="row">
+          <label for="nom">Votre nom<input id="nom" name="nom" autocomplete="name" placeholder="Ex. Fatou Diop"></label>
+          <label for="tel">Téléphone<input id="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="77 000 00 00"></label>
+        </div>
+        <div class="row">
+          <label for="ville">Ville / quartier<input id="ville" name="ville" placeholder="Ex. Keur Massar, Touba…"></label>
+          <label for="lieu">Type de lieu
+            <select id="lieu" name="lieu">
+              <option>Maison / appartement</option>
+              <option>Salon de coiffure</option>
+              <option>Atelier de couture</option>
+              <option>Boutique / magasin</option>
+              <option>Bureau</option>
+              <option>Autre</option>
+            </select>
+          </label>
+        </div>
+        <fieldset>
+          <legend>Travaux souhaités</legend>
+          <div class="picks" id="picks"></div>
+        </fieldset>
+        <div class="row">
+          <label for="dim">Dimensions <span class="opt">(si vous les avez)</span><input id="dim" name="dim" placeholder="Ex. mur 3,20 m × 2,60 m"></label>
+          <label for="quand">Quand ?
+            <select id="quand" name="quand">
+              <option>Dès que possible</option>
+              <option>Dans le mois</option>
+              <option>Dans 2 à 3 mois</option>
+              <option>Je me renseigne</option>
+            </select>
+          </label>
+        </div>
+        <label for="msg">Décrivez votre projet <span class="opt">(couleurs, style, idée…)</span><textarea id="msg" name="msg" placeholder="Ex. armoire 3 portes marron avec miroir, et faux plafond avec spots dans la chambre"></textarea></label>
+        <p class="note">Les photos de votre pièce, envoyez-les juste après dans la même discussion WhatsApp.</p>
+        <p class="err" id="err" hidden></p>
+        <button class="btn btn-wa" type="submit">Envoyer sur WhatsApp</button>
+        <div class="sent" id="sent" hidden>
+          <span>Si WhatsApp ne s'ouvre pas, écrivez-nous directement à ce numéro :</span>
+          <span class="num" id="numTxt">+221 78 211 81 53</span>
+          <span><button class="copy" type="button" id="copyNum">Copier le numéro</button></span>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b style="font-family:var(--display);font-weight:400;color:var(--fg)">MD DECO</b> · Décoration intérieur &amp; extérieur</span>
+    <span id="footInfo">WhatsApp : <span class="vWa">78 211 81 53</span><span id="fTk"> · TikTok : <a id="vTk" href="https://www.tiktok.com/@mddeco1" target="_blank" rel="noopener">@mddeco1</a></span><span id="fEm" hidden> · <span id="vEm"></span></span><span id="fHo" hidden> · <span id="vHo"></span></span> · <a href="gestion.html">Espace MD Deco</a></span>
+  </div>
+</footer>
+
+<a class="btn btn-wa float" href="#devis">Devis WhatsApp</a>
+
+<script>
+let WA = "221782118153", NOM = "MD Deco";
+const SERVICES = [
+  {k:"dress", t:"Chambres & dressings", d:"Armoires, dressings avec miroir, lits et chevets assortis.", a:"a-dress"},
+  {k:"tv", t:"Meubles TV & murs LED", d:"Murs TV avec rétroéclairage, étagères en verre et rangements.", a:"a-tv"},
+  {k:"plaf", t:"Faux plafonds & spots", d:"Plafonds en plâtre ou en lambris bois, avec spots et bandes LED.", a:"a-plaf"},
+  {k:"rid", t:"Rideaux & voilages", d:"Rideaux, voilages et embrasses, posés avec tringles ou rails.", a:"a-rid"},
+  {k:"mur", t:"Lambris & panneaux muraux", d:"Lambris rainurés, panneaux 3D et habillages muraux.", a:"a-mur"},
+  {k:"shop", t:"Salons & boutiques", d:"Salons de coiffure, ateliers de tailleur, vitrines et comptoirs.", a:"a-shop"}
+];
+const grid = document.getElementById("svcGrid"), picks = document.getElementById("picks");
+SERVICES.forEach(s=>{
+  const c = document.createElement("article"); c.className="svc";
+  c.innerHTML = `<div class="art ${s.a}" id="art-${s.k}"><span class="ph">Photo à venir</span></div><div class="body"><h3>${s.t}</h3><p>${s.d}</p><button class="ask" type="button">Demander un devis →</button></div>`;
+  c.querySelector(".ask").onclick = ()=>{ document.getElementById("p-"+s.k).checked = true; document.getElementById("devis").scrollIntoView({behavior:"smooth"}); };
+  grid.appendChild(c);
+  const l = document.createElement("label"); l.className="pick";
+  l.innerHTML = `<input type="checkbox" id="p-${s.k}" value="${s.t}"><span>${s.t}</span>`;
+  picks.appendChild(l);
+});
+const f = document.getElementById("f"), err = document.getElementById("err");
+f.addEventListener("submit", e=>{
+  e.preventDefault();
+  const v = id=>document.getElementById(id).value.trim();
+  const travaux = [...picks.querySelectorAll("input:checked")].map(i=>i.value);
+  if(!v("nom") || !v("tel")){ err.textContent="Indiquez votre nom et votre téléphone pour qu'on puisse vous rappeler."; err.hidden=false; return; }
+  if(!travaux.length && !v("msg")){ err.textContent="Choisissez au moins un type de travaux ou décrivez votre projet."; err.hidden=false; return; }
+  err.hidden = true;
+  const lines = [
+    "Bonjour "+NOM+", je souhaite un devis.",
+    "",
+    "Nom : "+v("nom"),
+    "Téléphone : "+v("tel"),
+    v("ville") ? "Ville / quartier : "+v("ville") : "",
+    "Lieu : "+v("lieu"),
+    travaux.length ? "Travaux : "+travaux.join(", ") : "",
+    v("dim") ? "Dimensions : "+v("dim") : "",
+    "Quand : "+v("quand"),
+    v("msg") ? "\nProjet : "+v("msg") : "",
+    "",
+    "Je vous envoie les photos de la pièce."
+  ].filter(x=>x!=="");
+  // 1) la demande arrive dans la gestion (+ notification sur son téléphone)
+  try{
+    fetch(`${SB_URL}/rest/v1/mddeco_demandes`, {method:"POST", keepalive:true,
+      headers:{apikey:SB_KEY, "Content-Type":"application/json", Prefer:"return=minimal"},
+      body: JSON.stringify({nom:v("nom").slice(0,80), tel:v("tel").slice(0,30), ville:v("ville").slice(0,80)||null, lieu:v("lieu").slice(0,60),
+        travaux, dimensions:v("dim").slice(0,120)||null, quand:v("quand").slice(0,40), message:v("msg").slice(0,1500)||null})
+    }).catch(()=>{});
+  }catch(_){}
+  // 2) et sur WhatsApp
+  const url = "https://wa.me/"+WA+"?text="+encodeURIComponent(lines.join("\n"));
+  document.getElementById("sent").hidden = false;
+  const a = document.createElement("a"); a.href=url; a.target="_blank"; a.rel="noopener"; document.body.appendChild(a); a.click(); a.remove();
+});
+/* Photos chargées par MD Deco (Supabase) */
+const SB_URL = "https://kthpqmarejopooanolos.supabase.co";
+const SB_KEY = "sb_publishable_PdnBB9Lb-kx2LcTKnlqq7A_woYRpZxV";
+const photoUrl = p => `${SB_URL}/storage/v1/object/public/mddeco/${p.split("/").map(encodeURIComponent).join("/")}`;
+const escH = s => String(s??"").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function openGallery(s, list){
+  const lb = document.createElement("div"); lb.className = "lb"; lb.setAttribute("role","dialog"); lb.setAttribute("aria-label", s.t);
+  lb.innerHTML = `<div class="lb-in"><div class="lb-h"><h3>${s.t}</h3><button class="lb-x" type="button">Fermer</button></div>` +
+    list.map(p=>`<figure><img loading="lazy" src="${photoUrl(p.path)}" alt="${escH(p.legende||s.t)}">${p.legende?`<figcaption>${escH(p.legende)}</figcaption>`:""}</figure>`).join("") +
+    `<a class="btn btn-wa" href="#devis" data-go>Demander un devis pour ce travail</a></div>`;
+  const shut = ()=>{ lb.remove(); document.body.style.overflow=""; };
+  lb.querySelector(".lb-x").onclick = shut;
+  lb.querySelector("[data-go]").onclick = ()=>{ shut(); document.getElementById("p-"+s.k).checked = true; };
+  document.addEventListener("keydown", function k(e){ if(e.key==="Escape"){ shut(); document.removeEventListener("keydown",k);} });
+  document.body.appendChild(lb); document.body.style.overflow="hidden"; lb.querySelector(".lb-x").focus();
+}
+(async ()=>{
+  try{
+    const r = await fetch(`${SB_URL}/rest/v1/mddeco_photos?select=categorie,path,legende&order=created_at.desc`, {headers:{apikey:SB_KEY}});
+    if(!r.ok) return;
+    const rows = await r.json();
+    SERVICES.forEach(s=>{
+      const list = rows.filter(x=>x.categorie===s.k); if(!list.length) return;
+      const art = document.getElementById("art-"+s.k);
+      art.classList.add("has"); art.style.backgroundImage = `url("${photoUrl(list[0].path)}")`;
+      art.innerHTML = `<span class="count">${list.length} photo${list.length>1?"s":""}</span>`;
+      art.setAttribute("role","button"); art.tabIndex = 0; art.setAttribute("aria-label", "Voir les photos : "+s.t);
+      art.onclick = ()=>openGallery(s, list);
+      art.onkeydown = e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openGallery(s, list);} };
+    });
+  }catch(e){ /* pas de connexion : on garde les dessins */ }
+})();
+/* Infos de la vitrine remplies par MD Deco dans sa gestion */
+(async ()=>{
+  try{
+    const r = await fetch(`${SB_URL}/rest/v1/mddeco_vitrine?select=nom,whatsapp,zone,email,tiktok,horaires&id=eq.1`, {headers:{apikey:SB_KEY}});
+    if(!r.ok) return;
+    const [x] = await r.json(); if(!x) return;
+    const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+    let n = String(x.whatsapp||"").replace(/\D/g,""); if(n.length===9) n = "221"+n;
+    if(n.length>=11){ WA = n; document.querySelectorAll(".vWa").forEach(el=>el.textContent = x.whatsapp); set("numTxt", "+"+n.slice(0,3)+" "+x.whatsapp.replace(/^\+?221\s*/,"")); }
+    if(x.nom){ NOM = x.nom; }
+    if(x.zone){ set("vZone", x.zone); document.getElementById("fZone").hidden = false; }
+    if(x.tiktok){ const h = x.tiktok.replace(/^@/,""); const a = document.getElementById("vTk"); a.textContent = "@"+h; a.href = "https://www.tiktok.com/@"+encodeURIComponent(h);
+      document.querySelectorAll('a[href^="https://www.tiktok.com/"]').forEach(el=>el.href = a.href); }
+    else document.getElementById("fTk").hidden = true;
+    if(x.email){ set("vEm", x.email); document.getElementById("fEm").hidden = false; }
+    if(x.horaires){ set("vHo", x.horaires); document.getElementById("fHo").hidden = false; }
+  }catch(e){ /* on garde les infos par défaut */ }
+})();
+document.getElementById("copyNum").onclick = async (ev)=>{
+  const b = ev.currentTarget;
+  try{ await navigator.clipboard.writeText("+"+WA); b.textContent="Numéro copié"; }
+  catch(_){ const r=document.createRange(); r.selectNodeContents(document.getElementById("numTxt")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent="Numéro sélectionné"; }
+};
+</script>
+
+</body>
+</html>

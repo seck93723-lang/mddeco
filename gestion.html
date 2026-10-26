@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MD Deco Gestion</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MD Deco">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#3a2518">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<meta property="og:title" content="MD Deco — Gestion">
+<meta property="og:description" content="Demandes, devis, chantiers, paiements, équipe et photos de la vitrine MD Deco">
+<meta property="og:image" content="https://seck93723-lang.github.io/mddeco/copertina.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<style>
+/* Layout: phone-first app — walnut header with save status, scrolling content, bottom tab bar; forms open as bottom sheets */
+:root{
+  --bg:#f1efec; --surface:#ffffff; --fg:#231c17; --muted:#6c625a; --line:#e0dad2;
+  --brass:#a57a26; --brass-soft:#f3e8d2; --walnut:#3a2518; --on-dark:#f6efe4; --on-dark-muted:#cbbba7;
+  --ok:#2f7d4f; --ok-soft:#e0f0e6; --warn:#b26a00; --warn-soft:#fbecd3; --bad:#b33a2e; --bad-soft:#f8e1de; --wa:#1f8f4e;
+  --display:"Marcellus", Georgia, serif; --body:"Manrope","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15110e; --surface:#1f1915; --fg:#f1eae1; --muted:#a99c8e; --line:#362d26;
+  --brass:#d4a64a; --brass-soft:#3a2e19; --walnut:#24170f;
+  --ok:#5cc184; --ok-soft:#1c3326; --warn:#e7a24a; --warn-soft:#3a2a14; --bad:#ec7b6f; --bad-soft:#3d1f1b; --wa:#2fb06a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15110e; --surface:#1f1915; --fg:#f1eae1; --muted:#a99c8e; --line:#362d26;
+  --brass:#d4a64a; --brass-soft:#3a2e19; --walnut:#24170f;
+  --ok:#5cc184; --ok-soft:#1c3326; --warn:#e7a24a; --warn-soft:#3a2a14; --bad:#ec7b6f; --bad-soft:#3d1f1b; --wa:#2fb06a; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45;margin:0}
+h1,h2,h3{margin:0;font-weight:400;font-family:var(--display);text-wrap:balance}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--walnut)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--walnut);color:var(--on-dark)}
+.bar .in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:12px;padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mark{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--brass);display:grid;place-items:center;font-family:var(--display);color:var(--brass);font-size:14px;flex:none}
+.bar h1{font-size:20px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar small{display:block;font-family:var(--body);font-size:11px;color:var(--on-dark-muted);letter-spacing:.06em}
+.sync{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,246,220,.3);color:var(--on-dark-muted);white-space:nowrap;background:none;cursor:default}
+.sync.ok{color:#9fd8b2} .sync.err{color:#ffb4a8;border-color:#ffb4a8;cursor:pointer} .sync.demo{color:#f3d58c}
+
+main{max-width:760px;margin:0 auto;padding-block:16px 110px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px}
+.banner{background:var(--warn-soft);color:var(--fg);border-radius:10px;padding:10px 12px;font-size:13px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.banner button{background:none;border:0;color:var(--warn);font-weight:700;cursor:pointer;padding:0;font-size:13px}
+
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:2px;text-align:left;color:inherit;font:inherit}
+.kpi span{font-size:12px;color:var(--muted);font-weight:600}
+.kpi b{font-size:20px;font-weight:700}
+.kpi.hl{background:var(--walnut);border-color:var(--walnut);color:var(--on-dark)}
+.kpi.hl span{color:var(--on-dark-muted)}
+.kpi.hl b{color:var(--brass)}
+
+.sec{display:grid;gap:10px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.sec-h h2{font-size:22px}
+.link{background:none;border:0;color:var(--brass);font-weight:700;cursor:pointer;padding:0;font-size:14px}
+
+.list{display:grid;gap:8px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:8px;text-align:left;width:100%;color:inherit;font:inherit;cursor:pointer}
+.item.new{border-color:var(--brass);box-shadow:inset 3px 0 0 var(--brass)}
+.item .r1{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.item .t{font-weight:700;min-width:0}
+.item .s{color:var(--muted);font-size:13px;font-weight:500}
+.item .amt{font-weight:700;white-space:nowrap}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.p-ok{background:var(--ok-soft);color:var(--ok)} .p-warn{background:var(--warn-soft);color:var(--warn)} .p-bad{background:var(--bad-soft);color:var(--bad)} .p-n{background:var(--brass-soft);color:var(--brass)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.steps i{height:5px;border-radius:3px;background:var(--line)}
+.steps i.on{background:var(--brass)}
+.steplbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.empty{color:var(--muted);text-align:center;padding:18px;border:1px dashed var(--line);border-radius:12px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:999px;padding:11px 16px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;font-family:var(--body)}
+.btn:disabled{opacity:.55;cursor:default}
+.b-main{background:var(--brass);color:#1b130c} .b-wa{background:var(--wa);color:#fff}
+.b-line{background:transparent;color:var(--fg);border:1px solid var(--line)} .b-bad{background:transparent;color:var(--bad);border:1px solid var(--bad)}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:10px}
+.card > p{margin:0;color:var(--muted);font-size:14px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)} .kv dd{margin:0;text-align:right;font-weight:600;overflow-wrap:anywhere}
+.money{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;text-align:center}
+.money div{background:var(--bg);border-radius:10px;padding:10px 6px;display:grid}
+.money span{font-size:11px;color:var(--muted);font-weight:600}
+.money b{font-size:15px}
+.mini{display:grid;gap:6px}
+.mini .ln{display:flex;justify-content:space-between;gap:10px;font-size:14px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.mini .ln:last-child{border-bottom:0}
+.mini .ln span:first-child{min-width:0}
+.mini .ln small{display:block;color:var(--muted);font-size:12px}
+.stepper{display:flex;gap:6px;flex-wrap:wrap}
+.stepper button{flex:1;min-width:70px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:10px;padding:9px 4px;font-size:13px;font-weight:600;cursor:pointer}
+.stepper button.on{background:var(--brass);border-color:var(--brass);color:#1b130c}
+.back{background:none;border:0;color:var(--brass);font-weight:700;padding:0;cursor:pointer;justify-self:start;font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--bg)}
+.quote{background:var(--bg);border-radius:10px;padding:10px 12px;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+
+/* devis document */
+.doc{background:#fff;color:#231c17;border-radius:10px;padding:18px;border:1px solid var(--line);display:grid;gap:12px;font-size:13px}
+.doc .dh{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:2px solid #a57a26;padding-bottom:10px}
+.doc .dh b{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.04em}
+.doc table{width:100%;border-collapse:collapse}
+.doc th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6c625a;border-bottom:1px solid #e0dad2;padding:6px 4px}
+.doc td{padding:7px 4px;border-bottom:1px solid #eee8e0;vertical-align:top}
+.doc td.n,.doc th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.doc .tot{display:grid;justify-content:end;gap:4px;text-align:right}
+.doc .tot b{font-size:18px}
+.tablewrap{overflow-x:auto}
+
+/* photos */
+.drop{border:2px dashed var(--line);border-radius:12px;padding:18px;text-align:center;color:var(--muted);display:grid;gap:6px;justify-items:center;cursor:pointer;font-weight:500}
+.drop b{color:var(--fg)}
+.previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px}
+.previews img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;display:block}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.ph{position:relative;border-radius:10px;overflow:hidden;background:var(--bg);border:1px solid var(--line)}
+.ph img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.ph .cap{font-size:12px;color:var(--muted);padding:6px 8px;min-height:28px;overflow-wrap:anywhere}
+.ph .del{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);color:#fff;border:0;border-radius:999px;padding:5px 10px;font-weight:700;font-size:12px;cursor:pointer}
+.ph .conf{position:absolute;inset:0;background:rgba(20,12,8,.88);color:#fff;display:grid;place-content:center;gap:8px;text-align:center;padding:8px;font-size:13px;font-weight:600}
+.ph .conf div{display:flex;gap:6px;justify-content:center}
+.ph .conf button{border:0;border-radius:999px;padding:6px 12px;font-weight:700;font-size:12px;cursor:pointer}
+.progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--brass);width:0;transition:width .2s}
+.linkbox{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-weight:600;overflow-wrap:anywhere;user-select:all}
+.menu{display:grid;gap:8px}
+.menu button{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;font-weight:700;font-size:15px;color:var(--fg);cursor:pointer;text-align:left}
+.menu button span{color:var(--muted);font-weight:500;font-size:13px}
+ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:14px}
+
+/* nav */
+nav{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+nav .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+nav button{position:relative;background:none;border:0;padding:10px 2px 12px;display:grid;justify-items:center;gap:3px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer}
+nav button svg{width:22px;height:22px}
+nav button.on{color:var(--brass)}
+nav .badge{position:absolute;top:4px;left:calc(50% + 6px);background:var(--bad);color:#fff;border-radius:999px;font-size:10px;font-weight:700;padding:1px 6px;min-width:18px}
+
+/* login */
+.login{max-width:440px;margin:24px auto 0;width:100%}
+.f{display:grid;gap:12px}
+.f label{display:grid;gap:5px;font-size:13px;font-weight:700}
+.f input,.f select,.f textarea{font:16px var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px;width:100%;min-width:0}
+.f textarea{min-height:80px;resize:vertical}
+.f .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.f .hint{font-weight:500;color:var(--muted);font-size:12px}
+.telrow{display:flex;gap:8px;align-items:stretch}
+.telrow span{display:grid;place-items:center;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-weight:700;color:var(--muted)}
+.msg{font-size:13px;font-weight:600;border-radius:10px;padding:10px 12px}
+.m-bad{background:var(--bad-soft);color:var(--bad)} .m-ok{background:var(--ok-soft);color:var(--ok)}
+
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--surface);width:100%;max-width:640px;max-height:92%;overflow:auto;border-radius:18px 18px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:14px}
+.sheet h3{font-size:22px}
+.ligne{display:grid;grid-template-columns:1fr 60px 92px 34px;gap:6px;align-items:center}
+.ligne input{padding:9px;font-size:15px}
+.ligne button{background:none;border:1px solid var(--line);border-radius:8px;height:38px;color:var(--bad);cursor:pointer;font-size:16px}
+.lhead{display:grid;grid-template-columns:1fr 60px 92px 34px;gap:6px;font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase}
+.totline{display:flex;justify-content:space-between;font-weight:700;font-size:16px;padding-top:6px;border-top:1px solid var(--line)}
+.confirm{background:var(--bad-soft);border-radius:10px;padding:10px;display:grid;gap:8px;font-size:14px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px;z-index:40;max-width:calc(100% - 32px);text-align:center}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="in">
+  <span class="mark">MD</span>
+  <h1 id="ttl">MD Deco<small>Gestion de l'atelier</small></h1>
+  <button class="sync" id="sync" type="button" hidden></button>
+</div></header>
+
+<main id="app"></main>
+<nav id="navWrap" hidden><div class="in" id="nav"></div></nav>
+<div id="layer"></div>
+
+<script>
+/* ================= configuration ================= */
+const SB_URL = "https://kthpqmarejopooanolos.supabase.co";
+const SB_KEY = "sb_publishable_PdnBB9Lb-kx2LcTKnlqq7A_woYRpZxV";
+const BUCKET = "mddeco";
+const TABLES = {clients:"mddeco_clients", ouvriers:"mddeco_ouvriers", devis:"mddeco_devis", chantiers:"mddeco_chantiers"};
+const ETAPES = ["Mesures","Fabrication","Pose","Terminé"];
+const MODES = ["Wave","Orange Money","Espèces","Virement"];
+const CATS = [["dress","Chambres & dressings"],["tv","Meubles TV & murs LED"],["plaf","Faux plafonds & spots"],["rid","Rideaux & voilages"],["mur","Lambris & panneaux muraux"],["shop","Salons & boutiques"]];
+
+/* ================= utilitaires ================= */
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+const today = () => new Date().toISOString().slice(0,10);
+const F = n => (Math.round(n||0)).toLocaleString("fr-FR").replace(/ | /g," ") + " F";
+const esc = s => String(s??"").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dfr = d => d ? new Date(String(d).slice(0,10)+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"short"}) : "";
+const ago = iso => { const m = Math.round((Date.now()-new Date(iso))/60000); if(m<1) return "à l'instant"; if(m<60) return `il y a ${m} min`; const h=Math.round(m/60); if(h<24) return `il y a ${h} h`; return dfr(iso); };
+const digits = t => String(t||"").replace(/\D/g,"");
+const waNum = t => { let n = digits(t); if(n.length===9) n = "221"+n; return n; };
+const telEmail = t => waNum(t) + "@mddeco.sn";
+const $ = id => document.getElementById(id);
+const app = $("app"), layer = $("layer");
+function toast(t){ const d=document.createElement("div"); d.className="toast"; d.textContent=t; document.body.appendChild(d); setTimeout(()=>d.remove(),2400); }
+function openUrl(url){ const a=document.createElement("a"); a.href=url; a.target="_blank"; a.rel="noopener"; document.body.appendChild(a); a.click(); a.remove(); }
+function openWA(tel, text){ openUrl(`https://wa.me/${waNum(tel)}?text=${encodeURIComponent(text)}`); }
+async function copy(text, btn){ try{ await navigator.clipboard.writeText(text); if(btn) btn.textContent="Copié ✓"; toast("Copié"); }catch(e){ toast("Appuyez longuement sur le texte pour le copier"); } }
+
+/* ================= état ================= */
+let sb = null, demo = false, S = null, snap = {}, snapVit = "", snapReg = "", demandes = [], photos = [], view = {tab:"home"};
+try{ sb = window.supabase.createClient(SB_URL, SB_KEY); }catch(e){ sb = null; }
+
+function sample(){
+  const c = [
+    {id:"c1",nom:"Awa Ndiaye",tel:"77 412 55 10",lieu:"Liberté 6, Dakar"},
+    {id:"c2",nom:"Queen Beauty (salon)",tel:"76 980 21 44",lieu:"Parcelles Assainies"},
+    {id:"c3",nom:"Moussa Fall",tel:"78 330 67 02",lieu:"Touba, Darou Khoudoss"}];
+  const o = [{id:"o1",nom:"Ibrahima",metier:"Menuisier",tel:"77 100 20 30"},{id:"o2",nom:"Cheikh",metier:"Électricien LED",tel:"78 200 30 40"}];
+  const d = [
+    {id:"d1",num:"D-2026-001",clientId:"c1",titre:"Chambre parentale",date:"2026-10-02",acompte:50,statut:"accepté",lignes:[{d:"Armoire 3 portes avec miroir",q:1,p:420000},{d:"Faux plafond plâtre + 6 spots",q:1,p:180000}]},
+    {id:"d2",num:"D-2026-002",clientId:"c3",titre:"Salon et meuble TV",date:"2026-10-15",acompte:40,statut:"envoyé",lignes:[{d:"Mur TV rétroéclairé avec étagères verre",q:1,p:350000},{d:"Lambris mural (m²)",q:12,p:18000}]}];
+  const ch = [
+    {id:"h1",devisId:"d1",clientId:"c1",titre:"Chambre parentale",lieu:"Liberté 6, Dakar",montant:600000,etape:2,debut:"2026-10-05",fin:"2026-10-30",ouvriers:["o1"],
+     paiements:[{id:"p1",date:"2026-10-05",montant:300000,mode:"Wave"}],
+     depenses:[{id:"x1",date:"2026-10-06",libelle:"Panneaux + quincaillerie",montant:150000,type:"Matériel"}]},
+    {id:"h2",devisId:null,clientId:"c2",titre:"Vitrines salon de coiffure",lieu:"Parcelles Assainies",montant:450000,etape:1,debut:"2026-10-12",fin:"",ouvriers:["o1","o2"],paiements:[{id:"p2",date:"2026-10-12",montant:200000,mode:"Orange Money"}],depenses:[]}];
+  return {societe:{nom:"MD Deco",tel:"78 211 81 53",ntfy:"",vitrineUrl:"https://seck93723-lang.github.io/mddeco/"},
+    vitrine:{nom:"MD Deco",whatsapp:"78 211 81 53",zone:"Dakar et environs",email:"",tiktok:"@mddeco1",horaires:""},
+    clients:c,ouvriers:o,devis:d,chantiers:ch};
+}
+const sampleDemandes = () => [{id:"dm1",nom:"Fatou Diop",tel:"77 555 12 34",ville:"Keur Massar",lieu:"Maison / appartement",travaux:["Faux plafonds & spots","Rideaux & voilages"],dimensions:"Salon 4 m × 5 m",quand:"Dans le mois",message:"Plafond avec spots et rideaux beige.",statut:"nouvelle",created_at:new Date(Date.now()-35*60000).toISOString()}];
+
+const client = id => S.clients.find(c=>c.id===id) || {nom:"Client supprimé",tel:"",lieu:""};
+const ouvrier = id => S.ouvriers.find(o=>o.id===id) || {nom:"?",metier:""};
+const totDevis = d => d.lignes.reduce((a,l)=>a+(+l.q||0)*(+l.p||0),0);
+const paye = h => h.paiements.reduce((a,p)=>a+(+p.montant||0),0);
+const depense = h => h.depenses.reduce((a,p)=>a+(+p.montant||0),0);
+const reste = h => Math.max(0,(+h.montant||0) - paye(h));
+const nouvelles = () => demandes.filter(d=>d.statut==="nouvelle");
+function nextNum(){
+  const y = new Date().getFullYear();
+  const n = S.devis.map(d=>+(String(d.num).split("-")[2]||0)).reduce((a,b)=>Math.max(a,b),0)+1;
+  return `D-${y}-${String(n).padStart(3,"0")}`;
+}
+
+/* ================= enregistrement en ligne ================= */
+let syncing = false, again = false, retryT = null;
+function setSync(state, text){ const b=$("sync"); b.hidden=false; b.className="sync "+state; b.textContent=text; }
+function takeSnap(){
+  for(const k in TABLES) snap[k] = new Map(S[k].map(o=>[o.id, JSON.stringify(o)]));
+  snapVit = JSON.stringify(S.vitrine); snapReg = JSON.stringify(S.societe);
+}
+function save(){ if(demo){ return; } sync(); }
+async function sync(){
+  if(demo) return;
+  if(syncing){ again = true; return; }
+  syncing = true; clearTimeout(retryT); setSync("", "Envoi…");
+  try{
+    for(const k in TABLES){
+      const cur = new Map(S[k].map(o=>[o.id, JSON.stringify(o)]));
+      const up = []; for(const [id,j] of cur) if(snap[k].get(id)!==j) up.push({id, data:JSON.parse(j), updated_at:new Date().toISOString()});
+      const del = [...snap[k].keys()].filter(id=>!cur.has(id));
+      if(up.length){ const {error} = await sb.from(TABLES[k]).upsert(up); if(error) throw error; up.forEach(r=>snap[k].set(r.id, cur.get(r.id))); }
+      if(del.length){ const {error} = await sb.from(TABLES[k]).delete().in("id", del); if(error) throw error; del.forEach(id=>snap[k].delete(id)); }
+    }
+    const v = JSON.stringify(S.vitrine);
+    if(v!==snapVit){ const x=S.vitrine; const {error} = await sb.from("mddeco_vitrine").update({nom:x.nom,whatsapp:x.whatsapp,zone:x.zone||null,email:x.email||null,tiktok:x.tiktok||null,horaires:x.horaires||null,updated_at:new Date().toISOString()}).eq("id",1); if(error) throw error; snapVit=v; }
+    const r = JSON.stringify(S.societe);
+    if(r!==snapReg){ const x=S.societe; const {error} = await sb.from("mddeco_reglages").update({nom:x.nom,tel:x.tel,vitrine_url:x.vitrineUrl,updated_at:new Date().toISOString()}).eq("id",1); if(error) throw error; snapReg=r; }
+    setSync("ok","Enregistré ✓");
+  }catch(e){
+    console.error(e); setSync("err","Pas enregistré · réessayer"); retryT = setTimeout(sync, 15000);
+  }
+  syncing = false;
+  if(again){ again = false; sync(); }
+}
+$("sync").onclick = ()=>{ if($("sync").classList.contains("err")) sync(); };
+
+async function loadAll(){
+  const q = t => sb.from(t).select("id,data");
+  const [cl,ou,dv,ch,rg,vt] = await Promise.all([q(TABLES.clients),q(TABLES.ouvriers),q(TABLES.devis),q(TABLES.chantiers),
+    sb.from("mddeco_reglages").select("*").eq("id",1).single(), sb.from("mddeco_vitrine").select("*").eq("id",1).single()]);
+  for(const r of [cl,ou,dv,ch,rg,vt]) if(r.error) throw r.error;
+  const m = rows => rows.map(r=>({...r.data, id:r.id}));
+  const g = rg.data, v = vt.data;
+  S = {societe:{nom:g.nom, tel:g.tel, ntfy:g.ntfy_topic, vitrineUrl:g.vitrine_url},
+       vitrine:{nom:v.nom, whatsapp:v.whatsapp, zone:v.zone||"", email:v.email||"", tiktok:v.tiktok||"", horaires:v.horaires||""},
+       clients:m(cl.data), ouvriers:m(ou.data), devis:m(dv.data), chantiers:m(ch.data)};
+  S.chantiers.forEach(h=>{ h.paiements ||= []; h.depenses ||= []; h.ouvriers ||= []; });
+  takeSnap();
+  await Promise.all([loadDemandes(), loadPhotos()]);
+}
+async function loadDemandes(){
+  if(demo) return;
+  const {data, error} = await sb.from("mddeco_demandes").select("*").order("created_at",{ascending:false}).limit(300);
+  if(!error) demandes = data;
+}
+async function loadPhotos(){
+  if(demo) return;
+  const {data, error} = await sb.from("mddeco_photos").select("*").order("created_at",{ascending:false});
+  if(!error) photos = data;
+}
+async function setDemandeStatut(d, statut){
+  d.statut = statut;
+  if(!demo){ const {error} = await sb.from("mddeco_demandes").update({statut}).eq("id", d.id); if(error) toast("Erreur réseau, réessayez"); }
+}
+
+/* ================= connexion ================= */
+function vLogin(msg){
+  $("navWrap").hidden = true; $("sync").hidden = true;
+  app.innerHTML = `<div class="login card">
+    <h2 style="font-size:26px">Bienvenue</h2>
+    <p>Entrez votre numéro et votre mot de passe.</p>
+    <form class="f" id="fl" novalidate>
+      <label for="ltel">Numéro de téléphone<div class="telrow"><span>+221</span><input id="ltel" inputmode="tel" autocomplete="username" placeholder="77 000 00 00"></div></label>
+      <label for="lpass">Mot de passe<input id="lpass" type="password" autocomplete="current-password"></label>
+      <div class="msg m-bad" id="lmsg" ${msg?"":"hidden"}>${esc(msg||"")}</div>
+      <button class="btn b-main" type="submit" id="lbtn">Entrer</button>
+    </form>
+    <p style="font-size:13px">Mot de passe oublié ? Demandez à Adama de le remettre à zéro.</p>
+    <button class="link" type="button" id="lDemo" style="justify-self:start">Voir la démo (exemples, rien n'est enregistré)</button>
+  </div>`;
+  $("fl").onsubmit = async e=>{
+    e.preventDefault();
+    const tel = $("ltel").value, pass = $("lpass").value, m = $("lmsg");
+    if(digits(tel).length < 9){ m.textContent="Écrivez votre numéro (9 chiffres)."; m.hidden=false; return; }
+    if(!pass){ m.textContent="Écrivez votre mot de passe."; m.hidden=false; return; }
+    if(!sb){ m.textContent="Pas de connexion internet. Vérifiez puis rechargez la page."; m.hidden=false; return; }
+    $("lbtn").disabled = true; $("lbtn").textContent = "Connexion…";
+    const {error} = await sb.auth.signInWithPassword({email: telEmail(tel), password: pass});
+    if(error){ $("lbtn").disabled=false; $("lbtn").textContent="Entrer"; m.textContent = /fetch|network/i.test(error.message) ? "Pas de connexion internet." : "Numéro ou mot de passe incorrect."; m.hidden=false; return; }
+    boot();
+  };
+  $("lDemo").onclick = ()=>{ demo = true; S = sample(); demandes = sampleDemandes(); photos = []; setSync("demo","Démo"); startApp(); };
+}
+function vNewPass(first){
+  $("navWrap").hidden = true;
+  app.innerHTML = `<div class="login card">
+    <h2 style="font-size:24px">${first?"Choisissez votre mot de passe":"Changer le mot de passe"}</h2>
+    <p>${first?"Vous êtes entré avec un mot de passe provisoire. Choisissez le vôtre : vous seul le connaîtrez.":"Choisissez un nouveau mot de passe."}</p>
+    <form class="f" id="fp" novalidate>
+      <label for="p1">Nouveau mot de passe <span class="hint">(8 caractères minimum)</span><input id="p1" type="password" autocomplete="new-password"></label>
+      <label for="p2">Répétez le mot de passe<input id="p2" type="password" autocomplete="new-password"></label>
+      <div class="msg m-bad" id="pmsg" hidden></div>
+      <button class="btn b-main" type="submit">Enregistrer</button>
+      ${first?"":'<button class="btn b-line" type="button" id="pcancel">Annuler</button>'}
+    </form></div>`;
+  if(!first) $("pcancel").onclick = ()=>{ $("navWrap").hidden=false; go({tab:"plus"}); };
+  $("fp").onsubmit = async e=>{
+    e.preventDefault();
+    const a=$("p1").value, b=$("p2").value, m=$("pmsg");
+    if(a.length<8){ m.textContent="Au moins 8 caractères."; m.hidden=false; return; }
+    if(a!==b){ m.textContent="Les deux mots de passe ne sont pas pareils."; m.hidden=false; return; }
+    const {error} = await sb.auth.updateUser({password:a, data:{must_change:false}});
+    if(error){ m.textContent = /same|different/i.test(error.message) ? "Choisissez un mot de passe différent de l'ancien." : "Impossible d'enregistrer : "+error.message; m.hidden=false; return; }
+    toast("Mot de passe enregistré"); boot();
+  };
+}
+async function boot(){
+  if(!sb){ vLogin("Pas de connexion internet. Vérifiez puis rechargez la page."); return; }
+  const {data:{session}} = await sb.auth.getSession();
+  if(!session){ vLogin(); return; }
+  if(session.user.user_metadata?.must_change){ vNewPass(true); return; }
+  app.innerHTML = '<div class="empty">Chargement…</div>';
+  const {data: ok, error: aerr} = await sb.rpc("mddeco_is_admin");
+  if(aerr){ app.innerHTML = `<div class="card"><h2>Pas de connexion</h2><p>Vérifiez internet puis réessayez.</p><button class="btn b-main" type="button" onclick="boot()">Réessayer</button></div>`; return; }
+  if(!ok){ await sb.auth.signOut(); vLogin("Ce numéro n'a pas accès à cette gestion."); return; }
+  try{ await loadAll(); }catch(e){ console.error(e); app.innerHTML = `<div class="card"><h2>Pas de connexion</h2><p>Impossible de charger vos données. Vérifiez internet.</p><button class="btn b-main" type="button" onclick="boot()">Réessayer</button></div>`; return; }
+  setSync("ok","Enregistré ✓");
+  startApp();
+}
+function startApp(){
+  $("navWrap").hidden = false;
+  const h = location.hash.replace("#","");
+  if(["demandes","photos","vitrine"].includes(h)) view = {tab: h==="demandes"?"dm":"plus", sub: h==="demandes"?null:h};
+  render();
+}
+// rafraîchir les demandes quand on revient sur l'app, et toutes les minutes
+document.addEventListener("visibilitychange", async ()=>{ if(document.visibilityState==="visible" && S && !demo){ await loadDemandes(); if(!layer.innerHTML) render(); } });
+setInterval(async ()=>{ if(document.visibilityState==="visible" && S && !demo && !layer.innerHTML){ const n = nouvelles().length; await loadDemandes(); if(nouvelles().length>n){ toast("Nouvelle demande de devis"); render(); } else renderNav(); } }, 60000);
+
+/* ================= navigation ================= */
+function go(v){ view = v; render(); window.scrollTo(0,0); }
+const ICON = {
+  home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  dm:'<path d="M4 4h16v12H8l-4 4z"/><path d="M8 9h8M8 12h5"/>',
+  dv:'<path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5"/>',
+  ch:'<path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/>',
+  plus:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>'
+};
+const TABS = [["home","Accueil"],["dm","Demandes"],["dv","Devis"],["ch","Chantiers"],["plus","Plus"]];
+function renderNav(){
+  const n = nouvelles().length;
+  $("nav").innerHTML = TABS.map(([k,l])=>`<button type="button" class="${view.tab===k?"on":""}" data-k="${k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]}</svg>${l}${k==="dm"&&n?`<span class="badge">${n}</span>`:""}</button>`).join("");
+  document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>go({tab:b.dataset.k}));
+}
+function demoBanner(){ return demo ? `<div class="banner"><span>Mode démo : exemples seulement, rien n'est enregistré.</span><button type="button" id="quitDemo">Quitter la démo</button></div>` : ""; }
+
+/* ================= sheets ================= */
+function sheet(title, html, onSave, saveLbl="Enregistrer"){
+  layer.innerHTML = `<div class="scrim"><form class="sheet f" novalidate><h3>${title}</h3>${html}<div class="msg m-bad" hidden></div><div class="actions"><button class="btn b-main" type="submit">${saveLbl}</button><button class="btn b-line" type="button" data-x>Annuler</button></div></form></div>`;
+  const form = layer.querySelector("form"), msg = layer.querySelector(".msg");
+  layer.querySelector("[data-x]").onclick = close;
+  layer.querySelector(".scrim").addEventListener("click",e=>{ if(e.target.classList.contains("scrim")) close(); });
+  form.onsubmit = async e => { e.preventDefault(); const r = await onSave(form); if(typeof r==="string"){ msg.textContent=r; msg.hidden=false; return; } close(); save(); render(); };
+  return form;
+}
+function close(){ layer.innerHTML=""; }
+const val = (f,n) => (f.elements[n]?.value||"").trim();
+
+/* ================= éléments de liste ================= */
+function chItem(h){
+  const r = reste(h), c = client(h.clientId);
+  const pill = h.etape===3 ? (r>0?'<span class="pill p-bad">Terminé · à solder</span>':'<span class="pill p-ok">Terminé · soldé</span>') : `<span class="pill p-n">${ETAPES[h.etape]}</span>`;
+  return `<button class="item" type="button" data-ch="${h.id}">
+    <div class="r1"><div class="t">${esc(h.titre)}<div class="s">${esc(c.nom)} · ${esc(h.lieu)}</div></div>${pill}</div>
+    <div class="steps">${ETAPES.map((_,i)=>`<i class="${i<=h.etape?"on":""}"></i>`).join("")}</div>
+    <div class="steplbl"><span>Total <b class="num">${F(h.montant)}</b></span><span>Reste <b class="num" style="color:${r>0?"var(--bad)":"var(--ok)"}">${F(r)}</b></span></div>
+  </button>`;
+}
+function dvItem(d){
+  const pc = {"accepté":"p-ok","envoyé":"p-warn","refusé":"p-bad","brouillon":"p-n"}[d.statut]||"p-n";
+  return `<button class="item" type="button" data-dv="${d.id}">
+    <div class="r1"><div class="t">${esc(d.titre)}<div class="s">${esc(d.num)} · ${esc(client(d.clientId).nom)} · ${dfr(d.date)}</div></div><span class="pill ${pc}">${esc(d.statut)}</span></div>
+    <div class="steplbl"><span></span><b class="num amt">${F(totDevis(d))}</b></div>
+  </button>`;
+}
+const DM_PILL = {nouvelle:'<span class="pill p-bad">Nouvelle</span>', vue:'<span class="pill p-warn">À répondre</span>', devis:'<span class="pill p-ok">Devis fait</span>', "archivée":'<span class="pill p-n">Archivée</span>'};
+function dmItem(d){
+  return `<button class="item ${d.statut==="nouvelle"?"new":""}" type="button" data-dm="${d.id}">
+    <div class="r1"><div class="t">${esc(d.nom)}<div class="s">${esc(d.tel)}${d.ville?" · "+esc(d.ville):""} · ${ago(d.created_at)}</div></div>${DM_PILL[d.statut]||""}</div>
+    ${d.travaux?.length?`<div class="chips">${d.travaux.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div>`:""}
+  </button>`;
+}
+function bindItems(){
+  app.querySelectorAll("[data-ch]").forEach(b=>b.onclick=()=>go({tab:"ch",id:b.dataset.ch}));
+  app.querySelectorAll("[data-dv]").forEach(b=>b.onclick=()=>go({tab:"dv",id:b.dataset.dv}));
+  app.querySelectorAll("[data-dm]").forEach(b=>b.onclick=()=>go({tab:"dm",id:b.dataset.dm}));
+  app.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(JSON.parse(b.dataset.go)));
+  const q = $("quitDemo"); if(q) q.onclick = ()=>{ demo=false; S=null; demandes=[]; photos=[]; view={tab:"home"}; vLogin(); };
+}
+
+/* ================= vues ================= */
+function vitrineCard(){
+  return `<div class="card"><div class="sec-h"><h2 style="font-size:20px">Ma vitrine</h2><button class="link" type="button" data-go='{"tab":"plus","sub":"vitrine"}'>Gérer</button></div>
+    <p>Le lien à mettre sur TikTok, WhatsApp, Facebook…</p>
+    <div class="actions"><button class="btn b-main" type="button" id="shareV">Partager le lien</button><button class="btn b-line" type="button" id="copyV">Copier le lien</button></div></div>`;
+}
+function bindVitrineBtns(){
+  const url = S.societe.vitrineUrl;
+  const sh = $("shareV"), cp = $("copyV"), wv = $("waV"), op = $("openV");
+  const txt = `${S.vitrine.nom} — décoration intérieur & extérieur. Voyez nos réalisations et demandez votre devis :`;
+  if(sh) sh.onclick = async ()=>{ if(navigator.share){ try{ await navigator.share({title:S.vitrine.nom, text:txt, url}); }catch(e){} } else openUrl(`https://wa.me/?text=${encodeURIComponent(txt+" "+url)}`); };
+  if(cp) cp.onclick = ()=>copy(url, cp);
+  if(wv) wv.onclick = ()=>openUrl(`https://wa.me/?text=${encodeURIComponent(txt+" "+url)}`);
+  if(op) op.onclick = ()=>openUrl(url);
+}
+
+function vHome(){
+  const enCours = S.chantiers.filter(h=>h.etape<3);
+  const aEnc = S.chantiers.reduce((a,h)=>a+reste(h),0);
+  const attente = S.devis.filter(d=>d.statut==="envoyé");
+  const m = today().slice(0,7);
+  const encMois = S.chantiers.flatMap(h=>h.paiements).filter(p=>String(p.date).startsWith(m)).reduce((a,p)=>a+(+p.montant||0),0);
+  const nonSoldes = S.chantiers.filter(h=>h.etape===3 && reste(h)>0);
+  const nv = nouvelles();
+  return `${demoBanner()}
+  ${nv.length?`<div class="sec"><div class="sec-h"><h2>Nouvelles demandes</h2><button class="link" type="button" data-go='{"tab":"dm"}'>Tout voir</button></div><div class="list">${nv.slice(0,3).map(dmItem).join("")}</div></div>`:""}
+  <div class="kpis">
+    <div class="kpi hl"><span>Reste à encaisser</span><b class="num">${F(aEnc)}</b></div>
+    <div class="kpi"><span>Encaissé ce mois</span><b class="num">${F(encMois)}</b></div>
+    <div class="kpi"><span>Chantiers en cours</span><b class="num">${enCours.length}</b></div>
+    <div class="kpi"><span>Devis en attente</span><b class="num">${attente.length} · ${F(attente.reduce((a,d)=>a+totDevis(d),0))}</b></div>
+  </div>
+  <div class="actions"><button class="btn b-main" type="button" id="qDv">+ Nouveau devis</button><button class="btn b-line" type="button" id="qPay">+ Paiement reçu</button><button class="btn b-line" type="button" data-go='{"tab":"plus","sub":"photos"}'>+ Photos vitrine</button></div>
+  ${nonSoldes.length?`<div class="sec"><div class="sec-h"><h2>À relancer</h2></div><div class="list">${nonSoldes.map(chItem).join("")}</div></div>`:""}
+  <div class="sec"><div class="sec-h"><h2>Chantiers en cours</h2><button class="link" type="button" data-go='{"tab":"ch"}'>Tout voir</button></div>
+    <div class="list">${enCours.map(chItem).join("") || '<div class="empty">Aucun chantier en cours. Acceptez un devis pour créer un chantier.</div>'}</div></div>
+  ${vitrineCard()}`;
+}
+function afterHome(){ $("qDv").onclick = ()=>devisForm(); $("qPay").onclick = ()=>payForm(); bindVitrineBtns(); }
+
+/* ----- demandes ----- */
+function vDemandes(){
+  const f = view.filter || "a";
+  const L = demandes.filter(d=> f==="a" ? ["nouvelle","vue"].includes(d.statut) : f==="d" ? d.statut==="devis" : d.statut==="archivée");
+  return `${demoBanner()}<div class="sec-h"><h2>Demandes de devis</h2></div>
+  <p style="margin:0;color:var(--muted);font-size:14px">Les demandes envoyées depuis votre vitrine arrivent ici.</p>
+  <div class="stepper">${[["a","À traiter"],["d","Devis faits"],["x","Archivées"]].map(([k,l])=>`<button type="button" class="${f===k?"on":""}" data-f="${k}">${l}</button>`).join("")}</div>
+  <div class="list">${L.map(dmItem).join("") || '<div class="empty">Aucune demande ici. Partagez le lien de votre vitrine pour en recevoir.</div>'}</div>`;
+}
+function afterDemandes(){ app.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{ view.filter=b.dataset.f; render(); }); }
+function vDemande(d){
+  const linked = S.devis.find(x=>x.demandeId===d.id);
+  return `<button class="back" type="button" data-go='{"tab":"dm"}'>← Demandes</button>
+  <div class="card">
+    <div class="r1" style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><h2 style="font-size:24px">${esc(d.nom)}</h2><div style="color:var(--muted);font-size:13px">Reçue ${ago(d.created_at)}</div></div>${DM_PILL[d.statut]||""}</div>
+    <dl class="kv"><dt>Téléphone</dt><dd class="num">${esc(d.tel)}</dd>${d.ville?`<dt>Ville / quartier</dt><dd>${esc(d.ville)}</dd>`:""}${d.lieu?`<dt>Lieu</dt><dd>${esc(d.lieu)}</dd>`:""}${d.dimensions?`<dt>Dimensions</dt><dd>${esc(d.dimensions)}</dd>`:""}${d.quand?`<dt>Quand</dt><dd>${esc(d.quand)}</dd>`:""}</dl>
+    ${d.travaux?.length?`<div class="chips">${d.travaux.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div>`:""}
+    ${d.message?`<div class="quote">${esc(d.message)}</div>`:""}
+    <div class="actions">
+      <button class="btn b-wa" type="button" id="dmWa">Répondre sur WhatsApp</button>
+      ${linked?`<button class="btn b-line" type="button" data-go='{"tab":"dv","id":"${linked.id}"}'>Voir le devis</button>`:`<button class="btn b-main" type="button" id="dmDv">Faire le devis</button>`}
+    </div>
+  </div>
+  <div class="actions">${d.statut!=="archivée"?'<button class="btn b-line" type="button" id="dmArch">Archiver</button>':'<button class="btn b-line" type="button" id="dmUnarch">Remettre à traiter</button>'}</div>`;
+}
+function afterDemande(d){
+  if(d.statut==="nouvelle"){ setDemandeStatut(d,"vue"); renderNav(); }
+  $("dmWa").onclick = ()=>openWA(d.tel, `Bonjour ${d.nom}, c'est ${S.vitrine.nom}. Merci pour votre demande de devis${d.travaux?.length?" ("+d.travaux.join(", ")+")":""}. Quand pouvons-nous passer prendre les mesures ?`);
+  const mk = $("dmDv"); if(mk) mk.onclick = ()=>devisFromDemande(d);
+  const ar = $("dmArch"); if(ar) ar.onclick = async ()=>{ await setDemandeStatut(d,"archivée"); toast("Demande archivée"); go({tab:"dm"}); };
+  const un = $("dmUnarch"); if(un) un.onclick = async ()=>{ await setDemandeStatut(d,"vue"); render(); };
+}
+function devisFromDemande(d){
+  let c = S.clients.find(x=>waNum(x.tel)===waNum(d.tel));
+  if(!c){ c = {id:uid(), nom:d.nom, tel:d.tel, lieu:d.ville||""}; S.clients.push(c); }
+  devisForm(null, {clientId:c.id, titre:(d.travaux||[]).join(" + ").slice(0,80) || "Travaux", demandeId:d.id,
+    lignes:(d.travaux?.length?d.travaux:[""]).map(t=>({d:t,q:1,p:0}))});
+}
+
+/* ----- chantiers ----- */
+function vChantiers(){
+  const f = view.filter||"cours";
+  const L = S.chantiers.filter(h=> f==="cours"?h.etape<3 : f==="solder"? reste(h)>0 : h.etape===3).sort((a,b)=>String(b.debut).localeCompare(String(a.debut)));
+  return `${demoBanner()}<div class="sec-h"><h2>Chantiers</h2><button class="btn b-main" type="button" id="newCh">+ Chantier</button></div>
+  <div class="stepper">${[["cours","En cours"],["solder","À encaisser"],["fini","Terminés"]].map(([k,l])=>`<button type="button" class="${f===k?"on":""}" data-f="${k}">${l}</button>`).join("")}</div>
+  <div class="list">${L.map(chItem).join("") || '<div class="empty">Rien ici pour le moment.</div>'}</div>`;
+}
+function afterChantiers(){ app.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{view.filter=b.dataset.f;render();}); $("newCh").onclick = ()=>chForm(); }
+function vChantier(h){
+  const c = client(h.clientId), p = paye(h), dp = depense(h), r = reste(h);
+  return `<button class="back" type="button" data-go='{"tab":"ch"}'>← Chantiers</button>
+  <div class="card">
+    <div><h2 style="font-size:24px">${esc(h.titre)}</h2><div style="color:var(--muted);font-size:13px">${esc(c.nom)} · ${esc(h.lieu)}</div></div>
+    <div class="stepper">${ETAPES.map((e,i)=>`<button type="button" class="${i===h.etape?"on":""}" data-et="${i}">${e}</button>`).join("")}</div>
+    <div class="money"><div><span>Total</span><b class="num">${F(h.montant)}</b></div><div><span>Payé</span><b class="num" style="color:var(--ok)">${F(p)}</b></div><div><span>Reste</span><b class="num" style="color:${r>0?"var(--bad)":"var(--ok)"}">${F(r)}</b></div></div>
+    <dl class="kv"><dt>Début</dt><dd>${dfr(h.debut)||"—"}</dd><dt>Fin prévue</dt><dd>${dfr(h.fin)||"—"}</dd><dt>Équipe</dt><dd>${h.ouvriers.map(o=>esc(ouvrier(o).nom)).join(", ")||"—"}</dd><dt>Dépenses</dt><dd class="num">${F(dp)}</dd><dt>Bénéfice prévu</dt><dd class="num" style="color:${h.montant-dp>=0?"var(--ok)":"var(--bad)"}">${F(h.montant-dp)}</dd></dl>
+    <div class="actions">${c.tel?`<button class="btn b-wa" type="button" id="waCl">WhatsApp client</button>`:""}<button class="btn b-line" type="button" id="edCh">Modifier</button></div>
+  </div>
+  <div class="card"><div class="sec-h"><h2 style="font-size:20px">Paiements du client</h2><button class="link" type="button" id="addPay">+ Ajouter</button></div>
+    <div class="mini">${h.paiements.map(x=>`<div class="ln"><span>${dfr(x.date)}<small>${esc(x.mode)}</small></span><b class="num">${F(x.montant)}</b></div>`).join("") || '<span style="color:var(--muted);font-size:14px">Aucun paiement pour le moment.</span>'}</div></div>
+  <div class="card"><div class="sec-h"><h2 style="font-size:20px">Dépenses</h2><button class="link" type="button" id="addDep">+ Ajouter</button></div>
+    <div class="mini">${h.depenses.map(x=>`<div class="ln"><span>${esc(x.libelle)}<small>${dfr(x.date)} · ${esc(x.type)}</small></span><b class="num">${F(x.montant)}</b></div>`).join("") || '<span style="color:var(--muted);font-size:14px">Aucune dépense notée.</span>'}</div></div>
+  <div id="delZone"><button class="btn b-bad" type="button" id="delCh">Supprimer ce chantier</button></div>`;
+}
+function afterChantier(h){
+  app.querySelectorAll("[data-et]").forEach(b=>b.onclick=()=>{ h.etape=+b.dataset.et; save(); render(); toast("Étape : "+ETAPES[h.etape]); });
+  const w = $("waCl");
+  if(w) w.onclick = ()=>{ const c=client(h.clientId), r=reste(h);
+    openWA(c.tel, `Bonjour ${c.nom}, c'est ${S.vitrine.nom}. Votre chantier « ${h.titre} » est à l'étape : ${ETAPES[h.etape]}.` + (r>0?` Reste à payer : ${F(r)}.`:` Tout est réglé, merci !`)); };
+  $("edCh").onclick = ()=>chForm(h);
+  $("addPay").onclick = ()=>payForm(h.id);
+  $("addDep").onclick = ()=>depForm(h);
+  $("delCh").onclick = ()=>{
+    $("delZone").innerHTML = `<div class="confirm">Supprimer « ${esc(h.titre)} » avec ses paiements et dépenses ?<div class="actions"><button class="btn b-bad" type="button" id="yes">Oui, supprimer</button><button class="btn b-line" type="button" id="no">Non</button></div></div>`;
+    $("yes").onclick = ()=>{ S.chantiers = S.chantiers.filter(x=>x!==h); save(); go({tab:"ch"}); toast("Chantier supprimé"); };
+    $("no").onclick = render;
+  };
+}
+
+/* ----- devis ----- */
+function vDevisList(){
+  const L = [...S.devis].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  return `${demoBanner()}<div class="sec-h"><h2>Devis</h2><button class="btn b-main" type="button" id="newDv">+ Devis</button></div>
+  <div class="list">${L.map(dvItem).join("") || '<div class="empty">Aucun devis. Créez le premier ou ouvrez une demande.</div>'}</div>`;
+}
+function devisText(d){
+  const c = client(d.clientId), t = totDevis(d);
+  return `*${S.vitrine.nom} — Devis ${d.num}*\n${d.titre}\nClient : ${c.nom}\nDate : ${dfr(d.date)}\n\n` +
+    d.lignes.map(l=>`• ${l.d} — ${l.q} × ${F(l.p)} = ${F(l.q*l.p)}`).join("\n") +
+    `\n\n*Total : ${F(t)}*\nAcompte à la commande (${d.acompte}%) : ${F(t*d.acompte/100)}\n\nMerci de votre confiance.\n${S.vitrine.nom} · ${S.vitrine.whatsapp}`;
+}
+function vDevis(d){
+  const c = client(d.clientId), t = totDevis(d), linked = S.chantiers.find(h=>h.devisId===d.id);
+  return `<button class="back" type="button" data-go='{"tab":"dv"}'>← Devis</button>
+  <div class="doc">
+    <div class="dh"><div><b>${esc(S.vitrine.nom.toUpperCase())}</b><div>Décoration intérieur &amp; extérieur</div><div>${esc(S.vitrine.whatsapp)}</div></div><div style="text-align:right"><div><strong>Devis ${esc(d.num)}</strong></div><div>${dfr(d.date)}</div><div>${esc(c.nom)}</div><div>${esc(c.lieu)}</div></div></div>
+    <div><strong>${esc(d.titre)}</strong></div>
+    <div class="tablewrap"><table><thead><tr><th>Désignation</th><th class="n">Qté</th><th class="n">Prix</th><th class="n">Total</th></tr></thead>
+    <tbody>${d.lignes.map(l=>`<tr><td>${esc(l.d)}</td><td class="n">${l.q}</td><td class="n">${F(l.p)}</td><td class="n">${F(l.q*l.p)}</td></tr>`).join("")}</tbody></table></div>
+    <div class="tot"><span>Total</span><b class="num">${F(t)}</b><span>Acompte ${d.acompte}% : <strong class="num">${F(t*d.acompte/100)}</strong></span></div>
+  </div>
+  <div class="card">
+    <span style="font-weight:700;font-size:13px">Statut</span>
+    <div class="stepper">${["brouillon","envoyé","accepté","refusé"].map(s=>`<button type="button" class="${d.statut===s?"on":""}" data-st="${s}">${s[0].toUpperCase()+s.slice(1)}</button>`).join("")}</div>
+    <div class="actions">
+      <button class="btn b-wa" type="button" id="sendDv">Envoyer sur WhatsApp</button>
+      <button class="btn b-line" type="button" id="edDv">Modifier</button>
+      ${linked?`<button class="btn b-line" type="button" data-go='{"tab":"ch","id":"${linked.id}"}'>Voir le chantier</button>`:`<button class="btn b-main" type="button" id="mkCh">Accepté → créer le chantier</button>`}
+    </div>
+  </div>
+  <div id="delZone"><button class="btn b-bad" type="button" id="delDv">Supprimer ce devis</button></div>`;
+}
+function afterDevis(d){
+  app.querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{ d.statut=b.dataset.st; save(); render(); });
+  $("sendDv").onclick = ()=>{ const c=client(d.clientId); if(d.statut==="brouillon"){ d.statut="envoyé"; save(); render(); } openWA(c.tel, devisText(d)); };
+  $("edDv").onclick = ()=>devisForm(d);
+  const mk = $("mkCh");
+  if(mk) mk.onclick = ()=>{ d.statut="accepté"; const h={id:uid(),devisId:d.id,clientId:d.clientId,titre:d.titre,lieu:client(d.clientId).lieu,montant:totDevis(d),etape:0,debut:today(),fin:"",ouvriers:[],paiements:[],depenses:[]}; S.chantiers.push(h); save(); go({tab:"ch",id:h.id}); toast("Chantier créé"); };
+  $("delDv").onclick = ()=>{
+    $("delZone").innerHTML = `<div class="confirm">Supprimer le devis ${esc(d.num)} ?<div class="actions"><button class="btn b-bad" type="button" id="yes">Oui, supprimer</button><button class="btn b-line" type="button" id="no">Non</button></div></div>`;
+    $("yes").onclick = ()=>{ S.devis=S.devis.filter(x=>x!==d); save(); go({tab:"dv"}); toast("Devis supprimé"); };
+    $("no").onclick = render;
+  };
+}
+
+/* ----- plus ----- */
+function vPlus(){
+  return `${demoBanner()}<h2 style="font-size:24px">Plus</h2>
+  <div class="menu">
+    <button type="button" data-sub="photos">Photos de la vitrine <span>${demo?"démo":photos.length+" photo"+(photos.length>1?"s":"")}</span></button>
+    <button type="button" data-sub="vitrine">Ma vitrine <span>lien et infos</span></button>
+    <button type="button" data-sub="clients">Clients <span>${S.clients.length}</span></button>
+    <button type="button" data-sub="equipe">Équipe <span>${S.ouvriers.length}</span></button>
+    <button type="button" data-sub="notif">Notifications <span>sur le téléphone</span></button>
+    ${demo?"":'<button type="button" data-sub="pass">Changer le mot de passe <span></span></button><button type="button" data-sub="logout">Se déconnecter <span></span></button>'}
+  </div>`;
+}
+function afterPlus(){
+  app.querySelectorAll("[data-sub]").forEach(b=>b.onclick=async ()=>{
+    const s = b.dataset.sub;
+    if(s==="logout"){ await sb.auth.signOut(); S=null; view={tab:"home"}; vLogin(); return; }
+    if(s==="pass"){ vNewPass(false); return; }
+    go({tab:"plus", sub:s});
+  });
+}
+const backPlus = `<button class="back" type="button" data-go='{"tab":"plus"}'>← Plus</button>`;
+
+function vPhotos(){
+  return `${backPlus}<div class="card">
+    <h2 style="font-size:22px">Ajouter des photos</h2>
+    <p>Choisissez la catégorie, puis les photos. Elles apparaissent tout de suite sur votre vitrine.</p>
+    <div class="f">
+      <label for="pcat">Catégorie<select id="pcat">${CATS.map(([k,l])=>`<option value="${k}">${l}</option>`).join("")}</select></label>
+      <label for="pleg">Petite description <span class="hint">(facultatif)</span><input id="pleg" maxlength="120" placeholder="Ex. Armoire 3 portes, Keur Massar"></label>
+      <label class="drop" for="pfiles"><b>Toucher ici pour choisir des photos</b><span>Galerie ou appareil photo · plusieurs à la fois</span><input id="pfiles" type="file" accept="image/*" multiple hidden></label>
+      <div class="previews" id="pprev"></div>
+      <div class="progress" id="pprog" hidden><i></i></div>
+      <div class="msg" id="pmsg" hidden></div>
+      <button class="btn b-main" type="button" id="pup" disabled>Publier sur la vitrine</button>
+    </div>
+  </div>
+  <div class="card"><h2 style="font-size:22px">Photos sur la vitrine</h2>
+    ${CATS.map(([k,l])=>{ const L = photos.filter(p=>p.categorie===k);
+      return `<div class="sec"><div class="sec-h"><h3 style="font-size:18px">${l}</h3><span style="color:var(--muted);font-size:13px">${L.length}</span></div>
+        ${L.length?`<div class="pgrid">${L.map(p=>`<div class="ph" data-pid="${p.id}" data-path="${esc(p.path)}"><img loading="lazy" alt="" src="${sb.storage.from(BUCKET).getPublicUrl(p.path).data.publicUrl}"><div class="cap">${esc(p.legende||"")}</div><button class="del" type="button">Supprimer</button></div>`).join("")}</div>`:'<div class="empty" style="padding:10px;font-size:13px">Pas encore de photo : la vitrine montre un dessin.</div>'}</div>`; }).join("")}
+  </div>`;
+}
+function shrink(file){
+  return new Promise((res, rej)=>{
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = ()=>{ const k = Math.min(1, 1600/Math.max(img.naturalWidth, img.naturalHeight));
+      const cv = document.createElement("canvas"); cv.width=Math.round(img.naturalWidth*k); cv.height=Math.round(img.naturalHeight*k);
+      cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height); URL.revokeObjectURL(url);
+      cv.toBlob(b=> b?res(b):rej(new Error("conversion")), "image/jpeg", 0.82); };
+    img.onerror = ()=>{ URL.revokeObjectURL(url); rej(new Error("Format non lu")); };
+    img.src = url;
+  });
+}
+function afterPhotos(){
+  let picked = [];
+  const msg = (t,ok)=>{ const m=$("pmsg"); m.textContent=t; m.className="msg "+(ok?"m-ok":"m-bad"); m.hidden=!t; };
+  $("pfiles").onchange = ()=>{
+    picked = [...$("pfiles").files].filter(f=>f.type.startsWith("image/")).slice(0,20);
+    $("pprev").innerHTML = picked.map(f=>`<img alt="" src="${URL.createObjectURL(f)}">`).join("");
+    $("pup").disabled = !picked.length;
+    $("pup").textContent = picked.length ? `Publier ${picked.length} photo${picked.length>1?"s":""}` : "Publier sur la vitrine";
+    msg("");
+  };
+  $("pup").onclick = async ()=>{
+    if(demo){ msg("En mode démo, les photos ne sont pas envoyées."); return; }
+    const cat = $("pcat").value, leg = $("pleg").value.trim().slice(0,120) || null;
+    $("pup").disabled = true; $("pprog").hidden = false; const bar = $("pprog").firstElementChild;
+    let ok=0, ko=0;
+    for(let i=0;i<picked.length;i++){
+      try{
+        const blob = await shrink(picked[i]);
+        const path = `photos/${cat}/${Date.now()}-${Math.random().toString(36).slice(2,8)}.jpg`;
+        const {error:e1} = await sb.storage.from(BUCKET).upload(path, blob, {contentType:"image/jpeg", cacheControl:"31536000"});
+        if(e1) throw e1;
+        const {error:e2} = await sb.from("mddeco_photos").insert({categorie:cat, path, legende:leg});
+        if(e2){ await sb.storage.from(BUCKET).remove([path]); throw e2; }
+        ok++;
+      }catch(e){ console.error(e); ko++; }
+      bar.style.width = Math.round((i+1)/picked.length*100)+"%";
+    }
+    await loadPhotos(); render();
+    toast(ko ? `${ok} publiée(s), ${ko} en erreur` : `${ok} photo${ok>1?"s":""} publiée${ok>1?"s":""} sur la vitrine`);
+  };
+  app.querySelectorAll(".ph .del").forEach(b=>b.onclick=()=>{
+    const ph = b.closest(".ph"), c = document.createElement("div"); c.className="conf";
+    c.innerHTML = `Supprimer cette photo ?<div><button type="button" data-y style="background:#b33a2e;color:#fff">Oui</button><button type="button" data-n>Non</button></div>`;
+    ph.appendChild(c);
+    c.querySelector("[data-n]").onclick = ()=>c.remove();
+    c.querySelector("[data-y]").onclick = async ()=>{
+      c.textContent = "Suppression…";
+      const {error} = await sb.from("mddeco_photos").delete().eq("id", ph.dataset.pid);
+      if(error){ c.textContent="Erreur, réessayez."; setTimeout(()=>c.remove(),1500); return; }
+      await sb.storage.from(BUCKET).remove([ph.dataset.path]);
+      await loadPhotos(); render(); toast("Photo supprimée");
+    };
+  });
+}
+
+function vVitrine(){
+  const v = S.vitrine, url = S.societe.vitrineUrl;
+  return `${backPlus}<div class="card">
+    <h2 style="font-size:22px">Lien de ma vitrine</h2>
+    <p>Mettez-le dans la bio TikTok, en statut WhatsApp, sur Facebook… Les clients voient vos réalisations et demandent un devis.</p>
+    <div class="linkbox">${esc(url)}</div>
+    <div class="actions"><button class="btn b-main" type="button" id="shareV">Partager</button><button class="btn b-wa" type="button" id="waV">Envoyer sur WhatsApp</button><button class="btn b-line" type="button" id="copyV">Copier</button><button class="btn b-line" type="button" id="openV">Ouvrir</button></div>
+  </div>
+  <form class="card f" id="fv" novalidate>
+    <h2 style="font-size:22px">Infos affichées sur la vitrine</h2>
+    <p>Ce que vous remplissez apparaît sur la vitrine. Un champ vide n'apparaît pas.</p>
+    <label>Nom de l'entreprise<input name="nom" value="${esc(v.nom)}" maxlength="60"></label>
+    <label>WhatsApp pour les devis <span class="hint">(les demandes arrivent sur ce numéro)</span><input name="whatsapp" inputmode="tel" value="${esc(v.whatsapp)}" maxlength="25"></label>
+    <label>Zone de travail <span class="hint">(facultatif)</span><input name="zone" value="${esc(v.zone)}" maxlength="120" placeholder="Ex. Dakar, Thiès, Mbour"></label>
+    <label>Horaires <span class="hint">(facultatif)</span><input name="horaires" value="${esc(v.horaires)}" maxlength="120" placeholder="Ex. Lundi–samedi, 8h–19h"></label>
+    <label>TikTok <span class="hint">(facultatif)</span><input name="tiktok" value="${esc(v.tiktok)}" maxlength="60" placeholder="@mddeco1"></label>
+    <label>Email <span class="hint">(facultatif)</span><input name="email" type="email" inputmode="email" value="${esc(v.email)}" maxlength="120"></label>
+    <div class="msg m-bad" id="vmsg" hidden></div>
+    <button class="btn b-main" type="submit">Enregistrer</button>
+  </form>`;
+}
+function afterVitrine(){
+  bindVitrineBtns();
+  $("fv").onsubmit = e=>{
+    e.preventDefault(); const f = e.target, m = $("vmsg");
+    if(!val(f,"nom")){ m.textContent="Le nom est obligatoire."; m.hidden=false; return; }
+    if(digits(val(f,"whatsapp")).length<9){ m.textContent="Écrivez un numéro WhatsApp complet."; m.hidden=false; return; }
+    let tk = val(f,"tiktok"); if(tk && !tk.startsWith("@")) tk = "@"+tk.replace(/^.*tiktok\.com\/@?/,"");
+    Object.assign(S.vitrine, {nom:val(f,"nom"), whatsapp:val(f,"whatsapp"), zone:val(f,"zone"), horaires:val(f,"horaires"), tiktok:tk, email:val(f,"email")});
+    save(); toast(demo?"Démo : non enregistré":"Vitrine mise à jour"); render();
+  };
+}
+
+function vNotif(){
+  const t = S.societe.ntfy || "(disponible après connexion)";
+  return `${backPlus}<div class="card">
+    <h2 style="font-size:22px">Notifications sur le téléphone</h2>
+    <p>Pour être prévenu de chaque nouvelle demande, même quand le téléphone est verrouillé. À faire une seule fois.</p>
+    <ol class="how">
+      <li>Installez l'application gratuite <b>ntfy</b> (App Store ou Play Store).</li>
+      <li>Ouvrez ntfy, touchez <b>+</b> (s'abonner).</li>
+      <li>Collez ce code et validez :</li>
+    </ol>
+    <div class="linkbox">${esc(t)}</div>
+    <div class="actions"><button class="btn b-line" type="button" id="cpT">Copier le code</button><button class="btn b-main" type="button" id="testT">Envoyer une notification test</button></div>
+    <p>Gardez ce code pour vous : la notification contient le nom et le numéro du client. Les demandes arrivent aussi sur WhatsApp et dans l'onglet Demandes.</p>
+  </div>`;
+}
+function afterNotif(){
+  $("cpT").onclick = e=>copy(S.societe.ntfy, e.currentTarget);
+  $("testT").onclick = async ()=>{
+    if(demo || !S.societe.ntfy){ toast("Disponible après connexion"); return; }
+    try{ const r = await fetch("https://ntfy.sh/", {method:"POST", body:JSON.stringify({topic:S.societe.ntfy, title:"Test MD Deco", message:"Les notifications fonctionnent ✓", tags:["white_check_mark"]})});
+      toast(r.ok ? "Envoyée : regardez votre téléphone" : "Échec de l'envoi"); }catch(e){ toast("Pas de connexion"); }
+  };
+}
+
+function vClients(){
+  return `${backPlus}<div class="sec-h"><h2>Clients</h2><button class="btn b-main" type="button" id="newCl">+ Client</button></div>
+  <div class="list">${S.clients.map(c=>{
+    const hs = S.chantiers.filter(h=>h.clientId===c.id), r = hs.reduce((a,h)=>a+reste(h),0);
+    return `<button class="item" type="button" data-cl="${c.id}"><div class="r1"><div class="t">${esc(c.nom)}<div class="s">${esc(c.tel)} · ${esc(c.lieu)}</div></div>${r>0?`<span class="pill p-bad num">Doit ${F(r)}</span>`:`<span class="pill p-n">${hs.length} chantier${hs.length>1?"s":""}</span>`}</div></button>`;
+  }).join("") || '<div class="empty">Aucun client.</div>'}</div>`;
+}
+function afterClients(){ $("newCl").onclick = ()=>clForm(); app.querySelectorAll("[data-cl]").forEach(b=>b.onclick=()=>clForm(S.clients.find(c=>c.id===b.dataset.cl))); }
+function vEquipe(){
+  const m = today().slice(0,7);
+  return `${backPlus}<div class="sec-h"><h2>Équipe</h2><button class="btn b-main" type="button" id="newOu">+ Ouvrier</button></div>
+  <div class="list">${S.ouvriers.map(o=>{
+    const pays = S.chantiers.flatMap(h=>h.depenses.filter(x=>x.ouvrierId===o.id));
+    const mois = pays.filter(x=>String(x.date).startsWith(m)).reduce((a,x)=>a+(+x.montant||0),0);
+    const actifs = S.chantiers.filter(h=>h.etape<3 && h.ouvriers.includes(o.id)).map(h=>h.titre);
+    return `<div class="item" style="cursor:default"><div class="r1"><div class="t">${esc(o.nom)}<div class="s">${esc(o.metier)} · ${esc(o.tel)}</div></div><span class="pill p-n num">Ce mois ${F(mois)}</span></div>
+      <div class="s">Sur : ${actifs.map(esc).join(", ")||"aucun chantier en cours"}</div>
+      <div class="actions"><button class="btn b-line" type="button" data-po="${o.id}">+ Payer</button><button class="btn b-line" type="button" data-eo="${o.id}">Modifier</button></div></div>`;
+  }).join("") || '<div class="empty">Ajoutez vos ouvriers pour suivre leurs paiements.</div>'}</div>`;
+}
+function afterEquipe(){
+  $("newOu").onclick = ()=>ouForm();
+  app.querySelectorAll("[data-eo]").forEach(b=>b.onclick=()=>ouForm(S.ouvriers.find(o=>o.id===b.dataset.eo)));
+  app.querySelectorAll("[data-po]").forEach(b=>b.onclick=()=>payOuvrier(b.dataset.po));
+}
+
+/* ================= formulaires ================= */
+const clientOpts = sel => S.clients.map(c=>`<option value="${c.id}" ${c.id===sel?"selected":""}>${esc(c.nom)}</option>`).join("") + `<option value="__new" ${sel==="__new"?"selected":""}>+ Nouveau client…</option>`;
+const newClientFields = () => `<div id="ncf" class="f"><div class="two"><label>Nom du client<input name="ncNom"></label><label>Téléphone<input name="ncTel" inputmode="tel"></label></div><label>Quartier / ville<input name="ncLieu"></label></div>`;
+function wireClientSelect(form){ const s=form.elements.clientId, n=form.querySelector("#ncf"); const t=()=>n.hidden = s.value!=="__new"; s.onchange=t; t(); }
+function resolveClient(form){
+  if(form.elements.clientId.value!=="__new") return form.elements.clientId.value;
+  const nom = val(form,"ncNom"); if(!nom) return null;
+  const c = {id:uid(),nom,tel:val(form,"ncTel"),lieu:val(form,"ncLieu")}; S.clients.push(c); return c.id;
+}
+function devisForm(d, pre){
+  const isNew = !d;
+  d = d || {id:uid(),num:nextNum(),clientId:S.clients[0]?.id||"__new",titre:"",date:today(),acompte:50,statut:"brouillon",lignes:[{d:"",q:1,p:0}], ...(pre||{})};
+  const lines = d.lignes.map(l=>({...l}));
+  const form = sheet(isNew?"Nouveau devis":"Modifier "+esc(d.num), `
+    <label>Client<select name="clientId">${clientOpts(d.clientId)}</select></label>${newClientFields()}
+    <label>Titre du travail<input name="titre" value="${esc(d.titre)}" placeholder="Ex. Chambre parentale"></label>
+    <div class="two"><label>Date<input type="date" name="date" value="${d.date}"></label><label>Acompte %<input type="number" name="acompte" min="0" max="100" value="${d.acompte}" inputmode="numeric"></label></div>
+    <div class="lhead"><span>Désignation</span><span>Qté</span><span>Prix (F)</span><span></span></div>
+    <div id="lines" class="f" style="gap:6px"></div>
+    <button class="link" type="button" id="addL" style="justify-self:start">+ Ajouter une ligne</button>
+    <div class="totline"><span>Total</span><span class="num" id="tot"></span></div>`,
+  form=>{
+    const cid = resolveClient(form); if(!cid) return "Choisissez un client ou écrivez son nom.";
+    if(!val(form,"titre")) return "Écrivez le titre du travail.";
+    const L = lines.filter(l=>String(l.d).trim() && +l.p>0); if(!L.length) return "Ajoutez au moins une ligne avec un prix.";
+    Object.assign(d,{clientId:cid,titre:val(form,"titre"),date:val(form,"date")||today(),acompte:Math.min(100,Math.max(0,+val(form,"acompte")||0)),lignes:L.map(l=>({d:String(l.d).trim(),q:+l.q||1,p:+l.p}))});
+    if(isNew){ S.devis.push(d); view={tab:"dv",id:d.id}; toast("Devis enregistré");
+      if(d.demandeId){ const dm = demandes.find(x=>x.id===d.demandeId); if(dm) setDemandeStatut(dm,"devis"); } }
+  });
+  wireClientSelect(form);
+  const box = form.querySelector("#lines"), tot = form.querySelector("#tot");
+  const upd = ()=> tot.textContent = F(lines.reduce((a,l)=>a+(+l.q||0)*(+l.p||0),0));
+  const draw = ()=>{
+    box.innerHTML = lines.map((l,i)=>`<div class="ligne"><input aria-label="Désignation" data-i="${i}" data-k="d" value="${esc(l.d)}" placeholder="Ex. Armoire 3 portes"><input aria-label="Quantité" data-i="${i}" data-k="q" type="number" min="0" step="any" inputmode="decimal" value="${l.q}"><input aria-label="Prix unitaire" data-i="${i}" data-k="p" type="number" min="0" inputmode="numeric" value="${l.p||""}" placeholder="0"><button type="button" data-rm="${i}" aria-label="Retirer la ligne">×</button></div>`).join("");
+    box.querySelectorAll("input").forEach(inp=>inp.oninput=()=>{ lines[inp.dataset.i][inp.dataset.k]=inp.value; upd(); });
+    box.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{ lines.splice(+b.dataset.rm,1); if(!lines.length) lines.push({d:"",q:1,p:0}); draw(); });
+    upd();
+  };
+  form.querySelector("#addL").onclick = ()=>{ lines.push({d:"",q:1,p:0}); draw(); };
+  draw();
+}
+function chForm(h){
+  const isNew = !h;
+  h = h || {id:uid(),devisId:null,clientId:S.clients[0]?.id||"__new",titre:"",lieu:"",montant:0,etape:0,debut:today(),fin:"",ouvriers:[],paiements:[],depenses:[]};
+  const form = sheet(isNew?"Nouveau chantier":"Modifier le chantier", `
+    <label>Client<select name="clientId">${clientOpts(h.clientId)}</select></label>${newClientFields()}
+    <label>Titre<input name="titre" value="${esc(h.titre)}" placeholder="Ex. Salon et meuble TV"></label>
+    <label>Lieu<input name="lieu" value="${esc(h.lieu)}" placeholder="Quartier, ville"></label>
+    <label>Montant total (F)<input name="montant" type="number" min="0" inputmode="numeric" value="${h.montant||""}"></label>
+    <div class="two"><label>Début<input type="date" name="debut" value="${h.debut}"></label><label>Fin prévue<input type="date" name="fin" value="${h.fin}"></label></div>
+    <fieldset style="border:0;padding:0;margin:0;display:grid;gap:6px"><legend style="font-size:13px;font-weight:700;padding:0;margin-bottom:6px">Équipe sur ce chantier</legend>
+    ${S.ouvriers.map(o=>`<label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" name="ou" value="${o.id}" ${h.ouvriers.includes(o.id)?"checked":""} style="width:auto">${esc(o.nom)} · ${esc(o.metier)}</label>`).join("") || '<span style="color:var(--muted);font-size:13px">Ajoutez des ouvriers dans Plus → Équipe.</span>'}</fieldset>`,
+  form=>{
+    const cid = resolveClient(form); if(!cid) return "Choisissez un client ou écrivez son nom.";
+    if(!val(form,"titre")) return "Écrivez le titre du chantier.";
+    Object.assign(h,{clientId:cid,titre:val(form,"titre"),lieu:val(form,"lieu")||client(cid).lieu,montant:+val(form,"montant")||0,debut:val(form,"debut"),fin:val(form,"fin"),ouvriers:[...form.querySelectorAll('[name="ou"]:checked')].map(x=>x.value)});
+    if(isNew){ S.chantiers.push(h); view={tab:"ch",id:h.id}; toast("Chantier créé"); }
+  });
+  wireClientSelect(form);
+}
+function payForm(chId){
+  const open = S.chantiers.filter(h=>reste(h)>0 || h.id===chId);
+  if(!open.length){ toast("Aucun chantier avec un reste à payer"); return; }
+  const sel = chId || open[0].id;
+  sheet("Paiement reçu", `
+    <label>Chantier<select name="ch">${open.map(h=>`<option value="${h.id}" ${h.id===sel?"selected":""}>${esc(h.titre)} — reste ${F(reste(h))}</option>`).join("")}</select></label>
+    <div class="two"><label>Montant (F)<input name="m" type="number" min="1" inputmode="numeric"></label><label>Date<input type="date" name="date" value="${today()}"></label></div>
+    <label>Mode<select name="mode">${MODES.map(m=>`<option>${m}</option>`).join("")}</select></label>`,
+  form=>{ const m = +val(form,"m"); if(!(m>0)) return "Écrivez le montant reçu.";
+    S.chantiers.find(h=>h.id===val(form,"ch")).paiements.push({id:uid(),date:val(form,"date")||today(),montant:m,mode:val(form,"mode")}); toast("Paiement enregistré"); });
+}
+function depForm(h){
+  sheet("Nouvelle dépense", `
+    <label>Libellé<input name="lib" placeholder="Ex. Panneaux, bandes LED, transport…"></label>
+    <div class="two"><label>Montant (F)<input name="m" type="number" min="1" inputmode="numeric"></label><label>Date<input type="date" name="date" value="${today()}"></label></div>
+    <label>Type<select name="type"><option>Matériel</option><option>Transport</option><option>Main-d'œuvre</option><option>Autre</option></select></label>`,
+  form=>{ const m = +val(form,"m"); if(!val(form,"lib")||!(m>0)) return "Écrivez le libellé et le montant.";
+    h.depenses.push({id:uid(),date:val(form,"date")||today(),libelle:val(form,"lib"),montant:m,type:val(form,"type")}); toast("Dépense ajoutée"); });
+}
+function payOuvrier(oid){
+  const o = ouvrier(oid);
+  const L = S.chantiers.filter(h=>h.ouvriers.includes(oid)).concat(S.chantiers.filter(h=>!h.ouvriers.includes(oid)));
+  if(!L.length){ toast("Créez d'abord un chantier"); return; }
+  sheet("Payer "+esc(o.nom), `
+    <label>Pour le chantier<select name="ch">${L.map(h=>`<option value="${h.id}">${esc(h.titre)}</option>`).join("")}</select></label>
+    <div class="two"><label>Montant (F)<input name="m" type="number" min="1" inputmode="numeric"></label><label>Date<input type="date" name="date" value="${today()}"></label></div>
+    <label>Pour quoi ?<input name="lib" placeholder="Ex. 3 jours de pose"></label>`,
+  form=>{ const m = +val(form,"m"); if(!(m>0)) return "Écrivez le montant.";
+    const h = S.chantiers.find(x=>x.id===val(form,"ch"));
+    h.depenses.push({id:uid(),date:val(form,"date")||today(),libelle:`${o.nom} — ${val(form,"lib")||"paiement"}`,montant:m,type:"Main-d'œuvre",ouvrierId:oid});
+    if(!h.ouvriers.includes(oid)) h.ouvriers.push(oid); toast("Paiement noté sur le chantier"); });
+}
+function clForm(c){
+  const isNew = !c; c = c || {id:uid(),nom:"",tel:"",lieu:""};
+  sheet(isNew?"Nouveau client":"Client", `
+    <label>Nom<input name="nom" value="${esc(c.nom)}"></label>
+    <label>Téléphone<input name="tel" inputmode="tel" value="${esc(c.tel)}" placeholder="77 000 00 00"></label>
+    <label>Quartier / ville<input name="lieu" value="${esc(c.lieu)}"></label>`,
+  form=>{ if(!val(form,"nom")) return "Écrivez le nom du client."; Object.assign(c,{nom:val(form,"nom"),tel:val(form,"tel"),lieu:val(form,"lieu")}); if(isNew) S.clients.push(c); toast("Client enregistré"); });
+}
+function ouForm(o){
+  const isNew = !o; o = o || {id:uid(),nom:"",metier:"",tel:""};
+  sheet(isNew?"Nouvel ouvrier":"Ouvrier", `
+    <label>Nom<input name="nom" value="${esc(o.nom)}"></label>
+    <label>Métier<input name="metier" value="${esc(o.metier)}" placeholder="Menuisier, électricien, poseur…"></label>
+    <label>Téléphone<input name="tel" inputmode="tel" value="${esc(o.tel)}"></label>`,
+  form=>{ if(!val(form,"nom")) return "Écrivez le nom."; Object.assign(o,{nom:val(form,"nom"),metier:val(form,"metier"),tel:val(form,"tel")}); if(isNew) S.ouvriers.push(o); toast("Équipe mise à jour"); });
+}
+
+/* ================= rendu ================= */
+function render(){
+  if(!S) return;
+  renderNav();
+  const t = view.tab;
+  if(t==="home"){ app.innerHTML=vHome(); afterHome(); }
+  else if(t==="dm"){ const d = view.id && demandes.find(x=>x.id===view.id); if(d){ app.innerHTML=vDemande(d); afterDemande(d); } else { app.innerHTML=vDemandes(); afterDemandes(); } }
+  else if(t==="ch"){ const h = view.id && S.chantiers.find(x=>x.id===view.id); if(h){ app.innerHTML=vChantier(h); afterChantier(h); } else { app.innerHTML=vChantiers(); afterChantiers(); } }
+  else if(t==="dv"){ const d = view.id && S.devis.find(x=>x.id===view.id); if(d){ app.innerHTML=vDevis(d); afterDevis(d); } else { app.innerHTML=vDevisList(); $("newDv").onclick=()=>devisForm(); } }
+  else if(t==="plus"){
+    const s = view.sub;
+    if(s==="photos"){ app.innerHTML=vPhotos(); afterPhotos(); }
+    else if(s==="vitrine"){ app.innerHTML=vVitrine(); afterVitrine(); }
+    else if(s==="notif"){ app.innerHTML=vNotif(); afterNotif(); }
+    else if(s==="clients"){ app.innerHTML=vClients(); afterClients(); }
+    else if(s==="equipe"){ app.innerHTML=vEquipe(); afterEquipe(); }
+    else { app.innerHTML=vPlus(); afterPlus(); }
+  }
+  bindItems();
+}
+boot();
+</script>
+
+</body>
+</html>
