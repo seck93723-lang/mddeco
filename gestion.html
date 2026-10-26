@@ -154,6 +154,35 @@ nav button svg{width:22px;height:22px}
 nav button.on{color:var(--brass)}
 nav .badge{position:absolute;top:4px;left:calc(50% + 6px);background:var(--bad);color:#fff;border-radius:999px;font-size:10px;font-weight:700;padding:1px 6px;min-width:18px}
 
+.wide-only{display:none!important}
+
+/* ===== ordinateur et grande tablette : menu à gauche, pages larges ===== */
+@media (min-width: 960px){
+  .bar .in{max-width:none;padding-left:24px;padding-right:24px}
+  nav{top:0;bottom:0;right:auto;width:236px;border-top:0;border-right:1px solid var(--line);padding-top:calc(70px + env(safe-area-inset-top,0px));padding-bottom:16px;z-index:14;overflow-y:auto}
+  nav .in{display:flex;flex-direction:column;gap:4px;max-width:none;padding:12px}
+  nav button{display:flex;align-items:center;gap:12px;justify-content:flex-start;padding:11px 14px;border-radius:10px;font-size:15px;text-align:left}
+  nav button:hover{background:var(--bg)}
+  nav button.on{background:var(--brass-soft)}
+  nav button svg{flex:none}
+  nav .badge{position:static;margin-left:auto}
+  nav button.wide-only{display:flex!important}
+  nav .sep{display:block!important;height:1px;background:var(--line);margin:8px 6px}
+  main{max-width:1120px;margin:0 0 0 236px;padding-block:24px 48px;padding-left:32px;padding-right:32px}
+  .kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .kpi b{font-size:22px}
+  .list{grid-template-columns:repeat(auto-fill,minmax(360px,1fr));align-items:start}
+  .menu{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pgrid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+  .login{margin-top:48px}
+  .scrim{align-items:center;padding:24px}
+  .sheet{border-radius:18px;max-height:88vh;max-width:680px}
+  .toast{bottom:28px;left:calc(50% + 118px)}
+  .wide2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+}
+body.nolog nav{display:none}
+@media (min-width: 960px){ body.nolog main{margin:0 auto} }
+
 /* login */
 .login{max-width:440px;margin:24px auto 0;width:100%}
 .f{display:grid;gap:12px}
@@ -320,7 +349,7 @@ async function setDemandeStatut(d, statut){
 
 /* ================= connexion ================= */
 function vLogin(msg){
-  $("navWrap").hidden = true; $("sync").hidden = true;
+  document.body.classList.add("nolog"); $("navWrap").hidden = true; $("sync").hidden = true;
   app.innerHTML = `<div class="login card">
     <h2 style="font-size:26px">Bienvenue</h2>
     <p>Entrez votre numéro et votre mot de passe.</p>
@@ -347,7 +376,7 @@ function vLogin(msg){
   $("lDemo").onclick = ()=>{ demo = true; S = sample(); demandes = sampleDemandes(); photos = []; setSync("demo","Démo"); startApp(); };
 }
 function vNewPass(first){
-  $("navWrap").hidden = true;
+  document.body.classList.add("nolog"); $("navWrap").hidden = true;
   app.innerHTML = `<div class="login card">
     <h2 style="font-size:24px">${first?"Choisissez votre mot de passe":"Changer le mot de passe"}</h2>
     <p>${first?"Vous êtes entré avec un mot de passe provisoire. Choisissez le vôtre : vous seul le connaîtrez.":"Choisissez un nouveau mot de passe."}</p>
@@ -358,7 +387,7 @@ function vNewPass(first){
       <button class="btn b-main" type="submit">Enregistrer</button>
       ${first?"":'<button class="btn b-line" type="button" id="pcancel">Annuler</button>'}
     </form></div>`;
-  if(!first) $("pcancel").onclick = ()=>{ $("navWrap").hidden=false; go({tab:"plus"}); };
+  if(!first) $("pcancel").onclick = ()=>{ document.body.classList.remove("nolog"); $("navWrap").hidden=false; go({tab:"plus"}); };
   $("fp").onsubmit = async e=>{
     e.preventDefault();
     const a=$("p1").value, b=$("p2").value, m=$("pmsg");
@@ -383,7 +412,7 @@ async function boot(){
   startApp();
 }
 function startApp(){
-  $("navWrap").hidden = false;
+  document.body.classList.remove("nolog"); $("navWrap").hidden = false;
   const h = location.hash.replace("#","");
   if(["demandes","photos","vitrine"].includes(h)) view = {tab: h==="demandes"?"dm":"plus", sub: h==="demandes"?null:h};
   render();
@@ -402,10 +431,19 @@ const ICON = {
   plus:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>'
 };
 const TABS = [["home","Accueil"],["dm","Demandes"],["dv","Devis"],["ch","Chantiers"],["plus","Plus"]];
+// sur ordinateur, le menu de gauche montre aussi ces pages directement
+const WIDE = [["photos","Photos vitrine",'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>'],
+  ["vitrine","Ma vitrine",'<path d="M3 9l1.5-5h15L21 9M3 9h18v11H3zM9 20v-6h6v6"/>'],
+  ["clients","Clients",'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/>'],
+  ["equipe","Équipe",'<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>']];
+const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
 function renderNav(){
-  const n = nouvelles().length;
-  $("nav").innerHTML = TABS.map(([k,l])=>`<button type="button" class="${view.tab===k?"on":""}" data-k="${k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]}</svg>${l}${k==="dm"&&n?`<span class="badge">${n}</span>`:""}</button>`).join("");
-  document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>go({tab:b.dataset.k}));
+  const n = nouvelles().length, wideSub = WIDE.some(w=>w[0]===view.sub);
+  $("nav").innerHTML = TABS.slice(0,4).map(([k,l])=>`<button type="button" class="${view.tab===k?"on":""}" data-k="${k}">${svg(ICON[k])}${l}${k==="dm"&&n?`<span class="badge">${n}</span>`:""}</button>`).join("")
+    + `<span class="sep wide-only" aria-hidden="true"></span>`
+    + WIDE.map(([s,l,ic])=>`<button type="button" class="wide-only ${view.tab==="plus"&&view.sub===s?"on":""}" data-sub="${s}">${svg(ic)}${l}</button>`).join("")
+    + `<button type="button" class="${view.tab==="plus"&&!wideSub?"on":""}" data-k="plus">${svg(ICON.plus)}Plus</button>`;
+  document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=> b.dataset.sub ? go({tab:"plus", sub:b.dataset.sub}) : go({tab:b.dataset.k}));
 }
 function demoBanner(){ return demo ? `<div class="banner"><span>Mode démo : exemples seulement, rien n'est enregistré.</span><button type="button" id="quitDemo">Quitter la démo</button></div>` : ""; }
 
@@ -544,17 +582,18 @@ function afterChantiers(){ app.querySelectorAll("[data-f]").forEach(b=>b.onclick
 function vChantier(h){
   const c = client(h.clientId), p = paye(h), dp = depense(h), r = reste(h);
   return `<button class="back" type="button" data-go='{"tab":"ch"}'>← Chantiers</button>
-  <div class="card">
+  <div class="wide2"><div class="card">
     <div><h2 style="font-size:24px">${esc(h.titre)}</h2><div style="color:var(--muted);font-size:13px">${esc(c.nom)} · ${esc(h.lieu)}</div></div>
     <div class="stepper">${ETAPES.map((e,i)=>`<button type="button" class="${i===h.etape?"on":""}" data-et="${i}">${e}</button>`).join("")}</div>
     <div class="money"><div><span>Total</span><b class="num">${F(h.montant)}</b></div><div><span>Payé</span><b class="num" style="color:var(--ok)">${F(p)}</b></div><div><span>Reste</span><b class="num" style="color:${r>0?"var(--bad)":"var(--ok)"}">${F(r)}</b></div></div>
     <dl class="kv"><dt>Début</dt><dd>${dfr(h.debut)||"—"}</dd><dt>Fin prévue</dt><dd>${dfr(h.fin)||"—"}</dd><dt>Équipe</dt><dd>${h.ouvriers.map(o=>esc(ouvrier(o).nom)).join(", ")||"—"}</dd><dt>Dépenses</dt><dd class="num">${F(dp)}</dd><dt>Bénéfice prévu</dt><dd class="num" style="color:${h.montant-dp>=0?"var(--ok)":"var(--bad)"}">${F(h.montant-dp)}</dd></dl>
     <div class="actions">${c.tel?`<button class="btn b-wa" type="button" id="waCl">WhatsApp client</button>`:""}<button class="btn b-line" type="button" id="edCh">Modifier</button></div>
-  </div>
+  </div><div class="sec">
   <div class="card"><div class="sec-h"><h2 style="font-size:20px">Paiements du client</h2><button class="link" type="button" id="addPay">+ Ajouter</button></div>
     <div class="mini">${h.paiements.map(x=>`<div class="ln"><span>${dfr(x.date)}<small>${esc(x.mode)}</small></span><b class="num">${F(x.montant)}</b></div>`).join("") || '<span style="color:var(--muted);font-size:14px">Aucun paiement pour le moment.</span>'}</div></div>
   <div class="card"><div class="sec-h"><h2 style="font-size:20px">Dépenses</h2><button class="link" type="button" id="addDep">+ Ajouter</button></div>
     <div class="mini">${h.depenses.map(x=>`<div class="ln"><span>${esc(x.libelle)}<small>${dfr(x.date)} · ${esc(x.type)}</small></span><b class="num">${F(x.montant)}</b></div>`).join("") || '<span style="color:var(--muted);font-size:14px">Aucune dépense notée.</span>'}</div></div>
+  </div></div>
   <div id="delZone"><button class="btn b-bad" type="button" id="delCh">Supprimer ce chantier</button></div>`;
 }
 function afterChantier(h){
@@ -641,7 +680,7 @@ function afterPlus(){
 const backPlus = `<button class="back" type="button" data-go='{"tab":"plus"}'>← Plus</button>`;
 
 function vPhotos(){
-  return `${backPlus}<div class="card">
+  return `${backPlus}<div class="wide2"><div class="card">
     <h2 style="font-size:22px">Ajouter des photos</h2>
     <p>Choisissez la catégorie, puis les photos. Elles apparaissent tout de suite sur votre vitrine.</p>
     <div class="f">
@@ -658,7 +697,7 @@ function vPhotos(){
     ${CATS.map(([k,l])=>{ const L = photos.filter(p=>p.categorie===k);
       return `<div class="sec"><div class="sec-h"><h3 style="font-size:18px">${l}</h3><span style="color:var(--muted);font-size:13px">${L.length}</span></div>
         ${L.length?`<div class="pgrid">${L.map(p=>`<div class="ph" data-pid="${p.id}" data-path="${esc(p.path)}"><img loading="lazy" alt="" src="${sb.storage.from(BUCKET).getPublicUrl(p.path).data.publicUrl}"><div class="cap">${esc(p.legende||"")}</div><button class="del" type="button">Supprimer</button></div>`).join("")}</div>`:'<div class="empty" style="padding:10px;font-size:13px">Pas encore de photo : la vitrine montre un dessin.</div>'}</div>`; }).join("")}
-  </div>`;
+  </div></div>`;
 }
 function shrink(file){
   return new Promise((res, rej)=>{
@@ -718,7 +757,7 @@ function afterPhotos(){
 
 function vVitrine(){
   const v = S.vitrine, url = S.societe.vitrineUrl;
-  return `${backPlus}<div class="card">
+  return `${backPlus}<div class="wide2"><div class="card">
     <h2 style="font-size:22px">Lien de ma vitrine</h2>
     <p>Mettez-le dans la bio TikTok, en statut WhatsApp, sur Facebook… Les clients voient vos réalisations et demandent un devis.</p>
     <div class="linkbox">${esc(url)}</div>
@@ -735,7 +774,7 @@ function vVitrine(){
     <label>Email <span class="hint">(facultatif)</span><input name="email" type="email" inputmode="email" value="${esc(v.email)}" maxlength="120"></label>
     <div class="msg m-bad" id="vmsg" hidden></div>
     <button class="btn b-main" type="submit">Enregistrer</button>
-  </form>`;
+  </form></div>`;
 }
 function afterVitrine(){
   bindVitrineBtns();
