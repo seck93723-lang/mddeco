@@ -138,6 +138,13 @@ main{max-width:760px;margin:0 auto;padding-block:16px 110px;padding-left:max(16p
 .ph .conf{position:absolute;inset:0;background:rgba(20,12,8,.88);color:#fff;display:grid;place-content:center;gap:8px;text-align:center;padding:8px;font-size:13px;font-weight:600}
 .ph .conf div{display:flex;gap:6px;justify-content:center}
 .ph .conf button{border:0;border-radius:999px;padding:6px 12px;font-weight:700;font-size:12px;cursor:pointer}
+.ph.cov{border:3px solid var(--brass)}
+.ph .badge{display:block;background:var(--brass);color:#fff;padding:5px 8px;font-weight:800;font-size:12px;text-align:center}
+.ph .pin{display:block;width:100%;border:0;border-top:1px solid var(--line);background:var(--surface);color:var(--fg);padding:9px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;min-height:40px}
+.ph .pin:hover{background:var(--brass-soft)}
+.ph.cov .pin{color:var(--muted);font-weight:600}
+.ph .pin:disabled{opacity:.6;cursor:wait}
+.tipbox{background:var(--brass-soft);border-radius:10px;padding:10px 12px;font-size:14px;line-height:1.45;margin:6px 0 4px}
 .progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
 .progress i{display:block;height:100%;background:var(--brass);width:0;transition:width .2s}
 .linkbox{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-weight:600;overflow-wrap:anywhere;user-select:all}
@@ -694,9 +701,10 @@ function vPhotos(){
     </div>
   </div>
   <div class="card"><h2 style="font-size:22px">Photos sur la vitrine</h2>
-    ${CATS.map(([k,l])=>{ const L = photos.filter(p=>p.categorie===k);
+    <div class="tipbox"><b>★ Photo principale :</b> dans chaque catégorie, touchez <b>« ☆ Mettre en premier »</b> sous votre plus belle photo. C'est elle que les clients voient en premier sur la vitrine. Une seule par catégorie : si vous en choisissez une autre, elle la remplace. Sans choix, la vitrine montre la dernière photo ajoutée.</div>
+    ${CATS.map(([k,l])=>{ const L = photos.filter(p=>p.categorie===k).sort((a,b)=>(b.couverture?1:0)-(a.couverture?1:0));
       return `<div class="sec"><div class="sec-h"><h3 style="font-size:18px">${l}</h3><span style="color:var(--muted);font-size:13px">${L.length}</span></div>
-        ${L.length?`<div class="pgrid">${L.map(p=>`<div class="ph" data-pid="${p.id}" data-path="${esc(p.path)}"><img loading="lazy" alt="" src="${sb.storage.from(BUCKET).getPublicUrl(p.path).data.publicUrl}"><div class="cap">${esc(p.legende||"")}</div><button class="del" type="button">Supprimer</button></div>`).join("")}</div>`:'<div class="empty" style="padding:10px;font-size:13px">Pas encore de photo : la vitrine montre un dessin.</div>'}</div>`; }).join("")}
+        ${L.length?`<div class="pgrid">${L.map(p=>`<div class="ph${p.couverture?" cov":""}" data-pid="${p.id}" data-cat="${k}" data-path="${esc(p.path)}"><img loading="lazy" alt="" src="${sb.storage.from(BUCKET).getPublicUrl(p.path).data.publicUrl}">${p.couverture?'<span class="badge">★ Photo principale</span>':""}<div class="cap">${esc(p.legende||"")}</div><button class="pin" type="button">${p.couverture?"Retirer ★":"☆ Mettre en premier"}</button><button class="del" type="button">Supprimer</button></div>`).join("")}</div>`:'<div class="empty" style="padding:10px;font-size:13px">Pas encore de photo : la vitrine montre un dessin.</div>'}</div>`; }).join("")}
   </div></div>`;
 }
 function shrink(file){
@@ -740,6 +748,14 @@ function afterPhotos(){
     await loadPhotos(); render();
     toast(ko ? `${ok} publiée(s), ${ko} en erreur` : `${ok} photo${ok>1?"s":""} publiée${ok>1?"s":""} sur la vitrine`);
   };
+  app.querySelectorAll(".ph .pin").forEach(b=>b.onclick=async ()=>{
+    const ph = b.closest(".ph"), on = !ph.classList.contains("cov");
+    b.disabled = true; b.textContent = "Un instant…";
+    const {error} = await sb.rpc("mddeco_photo_principale", {pid: on ? ph.dataset.pid : null, cat: ph.dataset.cat});
+    if(error){ console.error(error); b.disabled = false; b.textContent = on ? "☆ Mettre en premier" : "Retirer ★"; toast("Erreur, réessayez."); return; }
+    await loadPhotos(); render();
+    toast(on ? "★ Photo principale : c'est elle que les clients voient en premier" : "Photo principale retirée");
+  });
   app.querySelectorAll(".ph .del").forEach(b=>b.onclick=()=>{
     const ph = b.closest(".ph"), c = document.createElement("div"); c.className="conf";
     c.innerHTML = `Supprimer cette photo ?<div><button type="button" data-y style="background:#b33a2e;color:#fff">Oui</button><button type="button" data-n>Non</button></div>`;
